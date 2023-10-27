@@ -14,28 +14,45 @@
     --red: #F55123;
     --green: #0CB477;
 }
+aside, nav, footer, header, section, main {
+    display: block;
+}
+button {
+    color: transparent;
+    border: none;
+}
+button, input {
+    box-shadow: none;
+    background: none;
+    cursor: pointer;
+}
+input:focus, input:active,
+button:focus, button:active {
+    outline: none;
+}
+input+label {
+    cursor: pointer;
+}
+
 /*///////////////////////////////HEADER STYLES/////////////////////////////////*/
 .header-container{
     flex-direction: column;
     align-items: flex-start;
     align-self: stretch;
 }
-.header-rounding{
-    height: 24px;
-    align-self: stretch;
-}
-/*.header-rounding svg{*/
-/*    width: 1400px;*/
-/*    height: 24px;*/
+/*.header-rounding{*/
+/*    height: 1.5rem;*/
+/*    align-self: stretch;*/
 /*}*/
+
 .header{
     background: var(--violet);
     color: #FFFFFF;
     display: flex;
     flex-direction: row;
-    padding: 21px 24px 16px 24px;
+    padding: 1rem 1.3rem 1rem 1.3rem;
     align-items: center;
-    gap: 55px;
+    gap: 1.9rem;
     align-self: stretch;
 }
 
@@ -44,35 +61,36 @@
     flex-direction: row;
     align-items: center;
     width: 170px;
-    gap: 16px;
+    gap: 0.5rem;
+    padding: 0;
 }
 .catalog-block{
     display: flex;
-    padding: 12px 12px;
+    padding: 0.4rem 0.6rem 0.6rem 0.6rem;
     justify-content: space-between;
     border-radius: 8px;
     border: 1px solid rgba(255, 255, 255, 0.45);
 }
 .burger-icon-and-title img{
-    width: 28px;
-    height: 24px;
+    width: 1.75rem;
+    height: 1.8rem;
 }
 .title-wb{
-    display: flex;
     flex-shrink: 0;
     font-size: 28px;
     font-style: normal;
     font-weight: 600;
     line-height: 24px;
     font-variant: all-small-caps;
-    letter-spacing: 2.2px;
+    letter-spacing: 0.06rem;
     color: #FFF;
+    padding: 0 0 0.5rem 0.3rem;
 }
 
 .search-block{
     display: flex;
-    height: 50px;
-    padding: 0px 25px;
+    height: 3rem;
+    padding: 0 1.3rem;
     align-items: center;
     flex: 1 0 0;
     border-radius: 36px;
@@ -102,10 +120,10 @@
 .icons-and-menus{
     display: flex;
     flex-direction: row;
-    padding-right: 8px;
+    padding: 0 0.6rem 0.2rem 0.6rem;
     justify-content: center;
-    align-items: flex-end;
-    gap: 55px;
+    align-items: center;
+    gap: 2.9rem;
     align-self: stretch;
 }
 .icons-and-menus p{
@@ -113,6 +131,7 @@
     font-style: normal;
     font-weight: 400;
     line-height: 16px;
+    color: #FFFFFF;
 }
 .profile{
     display: flex;
