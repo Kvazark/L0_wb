@@ -10,36 +10,216 @@
     <div class="header">
         <div class="burger-icon-and-title">
             <button class="catalog-block">
-                <img src="icons/catalog.svg">
+                <img src="assets/icons/catalog.svg">
             </button>
             <h4 class="title-wb">Товары<br>и точка</h4>
         </div>
         <div class="search-block">
             <input type="text" placeholder="Я ищу...">
-            <button><img src="icons/search.svg"/></button>
+            <button><img src="assets/icons/search.svg"/></button>
         </div>
         <div class="icons-and-menus">
-            <button class="profile">
-                <img src="icons/user.svg">
+            <button class="profile-btn">
+                <img src="assets/icons/user.svg">
                 <p>Профиль</p>
             </button>
-            <button class="cart">
-                <img src="icons/cart.svg">
+            <button class="cart-btn">
+                <img src="assets/icons/cart.svg">
                 <p>Корзина</p>
             </button>
         </div>
     </div>
-<!--    <div class="header-rounding">-->
-<!--        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 24" fill="none">-->
-<!--            <path fill-rule="evenodd" clip-rule="evenodd" d="M24 0H0V24C0 10.7452 10.7452 0 24 0ZM1376 0C1389.25 0 1400 10.7452 1400 24V0H1376Z" fill="#6725A8"/>-->
-<!--        </svg>-->
-<!--    </div>-->
 </header>
 <main class="content">
-    
+    <section class="cart-container">
+        <h3 class="title-cart-container">Корзина</h3>
+        <div class="cart">
+            <div class="available-products">
+                <div class="checkbox-block">
+                    <input type="checkbox" checked id="cart_all" name="cart_all">
+                    <label for="cart_all"></label>
+                    <p>Выбрать все</p>
+                </div>
+                <div class="cards-available-product" id="cards-available-product">
+                    <hr/>
+                    <div class="available-item-cart" id="available-item-cart">
+                        <div class="description-product">
+                            <div class="item-image">
+                                <div class="checkbox-block">
+                                    <input type="checkbox" checked id="item-i" name="cart_item">
+                                    <label for="item-i"></label>
+                                </div>
+                                <div class="container-item-image">
+                                    <img src="assets/images/t-shirt_man.png" alt=""/>
+                                </div>
+                            </div>
+                            <div class="specifications-item">
+                                <h5></h5>
+                                <p class="item-color-and-size" id=${product.id+"-color-and-size"}
+                                   style="display: none"></p>
+                                <div>
+                                    <p></p>
+                                    <p><span><img src="assets/icons/icon-info.svg"></span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="details-product">
+                            <div class="details-count-product">
+                                <div class="counter-btn">
+                                    <button class="counter-btn-grey"><span>–</span></button>
+                                    <input type="number" maxlength="2" min="1" value="1" id="quantity-item-"/>
+                                    <button><span>+</span></button>
+                                </div>
+                                <p class="item-remain">Осталось 2 шт.</p>
+                                <div class="fav-del-product">
+                                    <button id="to_favorite">
+                                        <img src="assets/icons/to_favourites.svg">
+                                    </button>
+                                    <button id="to-delete">
+                                        <img src="assets/icons/delet.svg">
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="details-price-product">
+                                <h3 class="final-price-product">552 сом</h3>
+                                <p class="full-price-product">1051 сом</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="missing-products">
+                    <!--                <div class="cards-block">-->
+                    <!--                    <div class="card-available-product">-->
+                    <!--                        <img src="assets/images/t-shirt_man.png" alt=""/>-->
+                    <!--                        <div class="specifications-available-product">-->
+                    <!--                            <h5>Футболка UZcotton мужская</h5>-->
+                    <!--                            <p class="ap-color-and-size"><span>Цвет: булый</span><span>Размер: 56</span></p>-->
+                    <!--                            <p>Коледино WB</p>-->
+                    <!--                            <p>ООО Вайлдберис<button></button></p>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
+                    <!--                    <div class="card-available-product">-->
+                    <!--                        <img src="assets/images/silicone_case.png" alt=""/>-->
+                    <!--                        <div class="specifications-available-product">-->
+                    <!--                            <h5>Футболка UZcotton мужская</h5>-->
+                    <!--                            <p class="ap-color-and-size"><span>Цвет: булый</span><span>Размер: 56</span></p>-->
+                    <!--                            <p>Коледино WB</p>-->
+                    <!--                            <p>ООО Вайлдберис<button></button></p>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
+                    <!--                </div>-->
+                </div>
+                <div class="decoration-container">
+                    <div class="header-decoration-block">
+                        <h3>Способ доставки</h3>
+                        <button>Изменить</button>
+                    </div>
+                    <div class="delivery-method">
+                        <div class="dilivery-point">
+                            <h5>Пункт выдачи</h5>
+                            <p></p>
+                        </div>
+                        <div class="dilivery-price">
+                            <h5>Пункт выдачи</h5>
+                            <p></p>
+                        </div>
+                        <div class="dilivery-dates">
+                            <div class="dilivery-date">
+                                <h5>5-6 февраля</h5>
+                                <img src=""/>
+                            </div>
+                            <div class="dilivery-date">
+                                <h5>7-8 февраля</h5>
+                                <img src=""/>
+                            </div>
+                        </div>
+                        <div class="dilivery-note">
+                            <img src=""/>
+                            <p>Обратная доставка товаров на склад при отказе - <span>бесплатно</span></p>
+                        </div>
+                    </div>
+                    <div class="payment-method">
+                        <div class="header-decoration-block">
+                            <h3>Способ оплаты</h3>
+                            <button>Изменить</button>
+                        </div>
+                        <div class="bank-card">
+
+                        </div>
+                        <p class="payment-note">Спишем оплату с карты при получении</p>
+                    </div>
+                    <div class="recipient">
+                        <div class="header-decoration-block">
+                            <h3>Получатель</h3>
+                        </div>
+                        <div class="recipient-inputs">
+                            <input class="recipient-input-name" type="text" placeholder="Имя"/>
+                            <input class="recipient-input-surname" type="text" placeholder="Фамилия"/>
+                            <input class="recipient-input-email" type="text" placeholder="Имя"/>
+                            <input class="recipient-input-phone" type="text" placeholder="Имя"/>
+                            <input class="recipient-input-inn" type="text" placeholder="Имя"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <section class="price-container">
+        hdfhdfh
+    </section>
 </main>
 <section class="footer">
 
 </section>
 </body>
+<script src="index.js"></script>
+<script src="products.js"></script>
+<script src="cart.js"></script>
 </html>
+<!--                    <div class="card-cart-item">-->
+<!--                        <div class="description-product">-->
+<!--                            <div class="item-image">-->
+<!--                                <div class="checkbox-block">-->
+<!--                                    <input type="checkbox"  checked id="cart_item1" name="cart_item">-->
+<!--                                    <label for="cart_item1"></label>-->
+<!--                                </div>-->
+<!--                                <div class="container-item-image">-->
+<!--                                    <img src="assets/images/t-shirt_man.png" alt=""/>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="specifications-item">-->
+<!--                                <h5>Футболка UZcotton мужская</h5>-->
+<!--                                <p class="item-color-and-size"><span>Цвет: булый</span><span>Размер: 56</span></p>-->
+<!--                                <div>-->
+<!--                                    <p>Коледино WB</p>-->
+<!--                                    <p>ООО Вайлдберриз<span><img src="assets/icons/icon-info.svg"></span></p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="details-product">-->
+
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="card-cart-item">-->
+<!--                        <div class="description-product">-->
+<!--                            <div class="item-image">-->
+<!--                                <div class="checkbox-block">-->
+<!--                                    <input type="checkbox"  checked id="cart_item2" name="cart_item">-->
+<!--                                    <label for="cart_item2"></label>-->
+<!--                                </div>-->
+<!--                                <div class="container-item-image">-->
+<!--                                    <img src="assets/images/silicone_case.png" alt=""/>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="specifications-item">-->
+<!--                                <h5>Силиконовый чехол картхолдер (отверстия) для карт, прозрачный кейс бампер на Apple iPhone XR, MobiSafe</h5>-->
+<!--                                <p class="item-color-and-size"><span>Цвет: прозрачный</span></p>-->
+<!--                                <div>-->
+<!--                                    <p>Коледино WB</p>-->
+<!--                                    <p>ООО Мегапрофстиль<span><img src="assets/icons/icon-info.svg"></span></p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="details-product">-->
+
+<!--                        </div>-->
+<!--                    </div>-->
