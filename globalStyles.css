@@ -163,6 +163,29 @@ input[type=number] {
     align-items: center;
     gap: 6px;
     align-self: stretch;
+    position: relative;
+}
+.cart_counter_circle{
+    display: inline-flex;
+    height: 1rem;
+    width: 1rem;
+    transform: rotate(0.074deg);
+    padding: 0px 2px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 16px;
+    background: var(--red);
+    position: absolute;
+    top: 0;
+    right: 7px;
+    color: #FFF;
+    text-align: center;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 18px;
 }
 .icons-and-menus img{
     width: 28px;
@@ -261,6 +284,9 @@ input[type=number] {
     background: rgba(0, 0, 0, 0.10);
     border: none;
     position: absolute;
+}
+.dropdown{
+    width: 100%;
 }
 .cards-available-product{
     display: flex;
