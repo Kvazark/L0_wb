@@ -37,60 +37,62 @@
         <h3 class="title-cart-container">Корзина</h3>
         <div class="cart">
             <div class="available-products">
-                <div class="checkbox-block">
-                    <input type="checkbox" checked id="cart_all" name="cart_all" onclick="addAllCheck()">
-                    <label for="cart_all"></label>
-                    <p>Выбрать все</p>
-                </div>
-                <div>
-                    <img onclick="dropAvail()" class="dropbtn" src="assets/icons/arrow.svg" id="dropbtn-avail">
+                <div class="header-available">
+                    <div class="checkbox-block">
+                        <input type="checkbox" checked id="cart_all" name="cart_all" onclick="addAllCheck()">
+                        <label for="cart_all"></label>
+                        <p>Выбрать все</p>
+                    </div>
+                    <div>
+                        <img onclick="dropAvail()" class="dropbtn" src="assets/icons/arrow.svg" id="dropbtn-avail">
+                    </div>
                 </div>
                 <div class="dropdown">
                     <div class="cards-available-product" id="available-products-list">
                         <hr/>
-                        <div class="available-item-cart" id="available-item-cart">
-                            <div class="description-product">
-                                <div class="item-image">
-                                    <div class="checkbox-block">
-                                        <input type="checkbox" checked id="item-i" name="cart_item">
-                                        <label for="item-i"></label>
-                                    </div>
-                                    <div class="container-item-image">
-                                        <img src="assets/images/t-shirt_man.png" alt=""/>
-                                    </div>
-                                </div>
-                                <div class="specifications-item">
-                                    <h5></h5>
-                                    <p class="item-color-and-size" id=${product.id+"-color-and-size"}
-                                       style="display: none"></p>
-                                    <div>
-                                        <p></p>
-                                        <p><span><img src="assets/icons/icon-info.svg"></span></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="details-product">
-                                <div class="details-count-product">
-                                    <div class="counter-btn">
-                                        <button class="counter-btn-grey" id="minus-btn-" onclick="minus(id)"><span>–</span></button>
-                                        <input type="number" maxlength="2" min="1" value="1" id="quantity-item-"/>
-                                        <button id="plus-btn-" onclick="plus(id)"><span>+</span></button>
-                                    </div>
-                                    <p class="item-remain">Осталось 2 шт.</p>
-                                    <div class="fav-del-product">
-                                        <button id="to_favorite">
-                                            <img src="assets/icons/to_favourites.svg">
-                                        </button>
-                                        <button id="to-delete">
-                                            <img src="assets/icons/delet.svg">
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="details-price-product">
-                                    <h3 class="final-price-product">552 сом</h3>
-                                    <p class="full-price-product">1051 сом</p>
-                                </div>
-                            </div>
+<!--                        <div class="available-item-cart" id="available-item-cart">-->
+<!--                            <div class="description-product">-->
+<!--                                <div class="item-image">-->
+<!--                                    <div class="checkbox-block">-->
+<!--                                        <input type="checkbox" checked id="item-i" name="cart_item">-->
+<!--                                        <label for="item-i"></label>-->
+<!--                                    </div>-->
+<!--                                    <div class="container-item-image">-->
+<!--                                        <img src="assets/images/t-shirt_man.png" alt=""/>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="specifications-item">-->
+<!--                                    <h5></h5>-->
+<!--                                    <p class="item-color-and-size" id=${product.id+"-color-and-size"}-->
+<!--                                       style="display: none"></p>-->
+<!--                                    <div>-->
+<!--                                        <p></p>-->
+<!--                                        <p><span><img src="assets/icons/icon-info.svg"></span></p>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="details-product">-->
+<!--                                <div class="details-count-product">-->
+<!--                                    <div class="counter-btn">-->
+<!--                                        <button class="counter-btn-grey" id="minus-btn-" onclick="minus(id)"><span>–</span></button>-->
+<!--                                        <input type="number" maxlength="2" min="1" value="1" id="quantity-item-"/>-->
+<!--                                        <button id="plus-btn-" onclick="plus(id)"><span>+</span></button>-->
+<!--                                    </div>-->
+<!--                                    <p class="item-remain">Осталось 2 шт.</p>-->
+<!--                                    <div class="fav-del-product">-->
+<!--                                        <button id="to_favorite">-->
+<!--                                            <img src="assets/icons/to_favourites.svg">-->
+<!--                                        </button>-->
+<!--                                        <button id="to-delete">-->
+<!--                                            <img src="assets/icons/delet.svg">-->
+<!--                                        </button>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="details-price-product">-->
+<!--                                    <h3 class="final-price-product">552 сом</h3>-->
+<!--                                    <p class="full-price-product">1051 сом</p>-->
+<!--                                </div>-->
+<!--                            </div>-->
                         </div>
                     </div>
                 </div>

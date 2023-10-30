@@ -4,7 +4,7 @@ function renderAvailableProduct(product) {
     console.log(parent)
     let newElement = document.createElement("div");
     newElement.className = "available-item-cart";
-    newElement.id = `item-card-${product.id}`
+    newElement.id = `${product.id}`
     newElement.innerHTML = `<div class="description-product">
                             <div class="item-image">
                                 <div class="checkbox-block">
@@ -28,7 +28,7 @@ function renderAvailableProduct(product) {
                         </div>`;
     parent_available_products.append(newElement)
   //  addDescription(product);
-   // renderPrice(product, sumProducts);
+    renderPrice(product, sumProducts);
     checkCheckbox(product.id);
 }
 // products.forEach(product => {
@@ -65,19 +65,15 @@ let sumProducts = [];
 let cartCount = 0;
 let missingCount = 0;
 
-const like = '<svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">\n' +
-    '<path fill-rule="evenodd" clip-rule="evenodd" d="M3.03396 2.05857C2.26589 2.75224 1.76684 3.83284 1.99493 5.42928C2.22332 7.02783 3.26494 8.68522 4.80436 10.3478C6.25865 11.9184 8.10962 13.4437 9.99996 14.874C11.8903 13.4437 13.7413 11.9184 15.1956 10.3478C16.735 8.68521 17.7766 7.02783 18.005 5.4293C18.233 3.83285 17.734 2.75224 16.9659 2.05856C16.1766 1.34572 15.055 1 14 1C12.1319 1 11.0923 2.08479 10.5177 2.68443C10.4581 2.7466 10.4035 2.80356 10.3535 2.85355C10.1582 3.04882 9.84166 3.04882 9.6464 2.85355C9.59641 2.80356 9.54182 2.7466 9.48224 2.68443C8.90757 2.08479 7.86797 1 5.99995 1C4.94495 1 3.82325 1.34573 3.03396 2.05857ZM2.36371 1.31643C3.37369 0.404274 4.75202 0 5.99995 0C8.07123 0 9.34539 1.11257 9.99996 1.77862C10.6545 1.11257 11.9287 0 14 0C15.2479 0 16.6262 0.404275 17.6362 1.31644C18.6674 2.24776 19.2668 3.66715 18.9949 5.5707C18.7233 7.47217 17.5149 9.31479 15.9294 11.0272C14.3355 12.7486 12.3064 14.3952 10.3 15.9C10.1222 16.0333 9.87773 16.0333 9.69995 15.9C7.69353 14.3952 5.66443 12.7485 4.0706 11.0272C2.48503 9.31478 1.27665 7.47217 1.00498 5.57072C0.733012 3.66716 1.33249 2.24776 2.36371 1.31643Z"/>\n' +
-    '</svg>'
-
-const trash = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" onclick="deleteFromBucket(id)">\n' +
-    '<path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 3C0.5 2.72386 0.723858 2.5 1 2.5H15C15.2761 2.5 15.5 2.72386 15.5 3C15.5 3.27614 15.2761 3.5 15 3.5H1C0.723858 3.5 0.5 3.27614 0.5 3Z"/>\n' +
-    '<path fill-rule="evenodd" clip-rule="evenodd" d="M1.4584 2.5H14.5059L13.6411 13.6926C13.5405 14.9947 12.4546 16 11.1486 16H4.84639C3.54299 16 2.45829 14.9986 2.35435 13.6994L1.4584 2.5ZM2.5416 3.5L3.35117 13.6196C3.41353 14.3992 4.06435 15 4.84639 15H11.1486C11.9322 15 12.5837 14.3968 12.6441 13.6155L13.4256 3.5H2.5416Z"/>\n' +
-    '<path fill-rule="evenodd" clip-rule="evenodd" d="M11 3.5H5V1.46875C5 0.657582 5.65758 0 6.46875 0H9.53125C10.3424 0 11 0.657582 11 1.46875V3.5ZM6.46875 1C6.20987 1 6 1.20987 6 1.46875V2.5H10V1.46875C10 1.20987 9.79013 1 9.53125 1H6.46875Z"/>\n' +
-    '</svg>'
 
 function dropAvail() {
-    document.getElementById("available-products-list").classList.toggle("hide");
-    document.getElementById("dropbtn-avail").classList.toggle("close")
+    if(document.getElementById("available-products-list").style.display === 'none'){
+        document.getElementById("available-products-list").style.display = 'flex';
+        document.getElementById("dropbtn-avail").classList.toggle("close")
+    }else{
+        document.getElementById("available-products-list").style.display = 'none';
+        document.getElementById("dropbtn-avail").classList.toggle("close")
+    }
 }
 
 function dropNotAvail(){
@@ -175,37 +171,56 @@ function renderPrice(product){
             discontprice = (price * (100 - (elem.discount)))/100;
         }
     })
-    let divPrice = document.getElementById(product.id);
+    let divPrice = document.getElementById(`${product.id}`);
     let div = document.createElement('div');
     ////////////////////////////////////////////////////////
-    div.className = "product__panel-price";
-    div.id = product.id+'-price'
-    div.innerHTML = '<div class="product__panel-price__manage">' +
-        '   <div class="count">' +
-        '       <span id="'+product.id+'-minus" onmousedown="minus(id);" onmouseup="clearTimers()" onmouseout="clearTimers()" >−</span> <span>'+count+'</span> <span id="'+product.id+'-plus" onmousedown="plus(id) " onmouseup="clearTimers()" onmouseout="clearTimers()">+</span>' +
-        '   </div>' +
-        '   <div class="price__icons" id="'+product.id+'-price-icons">' +
-        '       '+like+''+trash+''+
-        '   </div>' +
-        '</div>'+
-        '<div class="price__block">' +
-        '   <span id="'+product.id+'-sum" class="price__block-disprice">'+parseInt(discontprice).toLocaleString()+'</span><span class="price__block-curr"> сом</span><br class="mob">' +
-        '   <div id="'+product.id+'-price-info" onmouseover="popupInfo(id)" onmouseout="popupInfo(id)">' +
-        '       <span style="font-weight: 400; font-size: 13px">'+parseInt(price).toLocaleString()+'</span><span style="font-weight: 400; font-size: 13px"> сом</span>' +
-        '   </div>' +
-        '   <div class="info__content" id="'+product.id+'-price-info-content">' +
-        '       <div class="discount"><span>Скидка '+product.discount+'%</span><span>-'+(product.price * (product.discount / 100)).toFixed(0)+' сом</span></div>' +
-        // '       <div class="discount"><span>Скидка покупателя '+person.discount+'%</span><span>-'+(product.price * (person.discount / 100)).toFixed(0)+' сом</span></div>' +
-        '   </div>' +
-        '</div>';
+    div.className = "details-product";
+    div.id = product.id+'-price';
+    div.innerHTML = `<div class="details-count-product">
+                                    <div class="counter-btn">
+                                        <button class="counter-btn-grey" id=${product.id+"-minus"} onclick="minus(id)"><span>–</span></button>
+                                        <input type="number" maxlength="2" min="1" value="1" id="quantity-item-"/>
+                                        <button id=${product.id+"-plus"} onclick="plus(id)"><span>+</span></button>
+                                    </div>
+                                    <div class="fav-del-product" id=${product.id+"-price-icons"}>
+                                        <button id="to_favorite">
+                                            <img src="assets/icons/to_favourites.svg">
+                                        </button>
+                                        <button id="to-delete">
+                                            <img src="assets/icons/delet.svg">
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="details-price-product">
+                                    <h3 class="final-price-product" id=${product.id+"-sum"}><span> сом</span></h3>
+                                    <p class="full-price-product">id=${product.id+"-sum"}<span> сом</span></p>
+                                </div>`
+    // div.innerHTML = '<div class="product__panel-price__manage">' +
+    //     '   <div class="count">' +
+    //     '       <span id="'+product.id+'-minus" onmousedown="minus(id);" onmouseup="clearTimers()" onmouseout="clearTimers()" >−</span> <span>'+count+'</span> <span id="'+product.id+'-plus" onmousedown="plus(id) " onmouseup="clearTimers()" onmouseout="clearTimers()">+</span>' +
+    //     '   </div>' +
+    //     '   <div class="price__icons" id="'+product.id+'-price-icons">' +
+    //     '       '+like+''+trash+''+
+    //     '   </div>' +
+    //     '</div>'+
+    //     '<div class="price__block">' +
+    //     '   <span id="'+product.id+'-sum" class="price__block-disprice">'+parseInt(discontprice).toLocaleString()+'</span><span class="price__block-curr"> сом</span><br class="mob">' +
+    //     '   <div id="'+product.id+'-price-info" onmouseover="popupInfo(id)" onmouseout="popupInfo(id)">' +
+    //     '       <span style="font-weight: 400; font-size: 13px">'+parseInt(price).toLocaleString()+'</span><span style="font-weight: 400; font-size: 13px"> сом</span>' +
+    //     '   </div>' +
+    //     '   <div class="info__content" id="'+product.id+'-price-info-content">' +
+    //     '       <div class="discount"><span>Скидка '+product.discount+'%</span><span>-'+(product.price * (product.discount / 100)).toFixed(0)+' сом</span></div>' +
+    //     // '       <div class="discount"><span>Скидка покупателя '+person.discount+'%</span><span>-'+(product.price * (person.discount / 100)).toFixed(0)+' сом</span></div>' +
+    //     '   </div>' +
+    //     '</div>';
     divPrice.append(div);
     if (count === product.countOnWarehouse){
-        // document.getElementById(product.id+'-plus').style.color = 'rgba(0, 0, 0, 0.2)'
-        // document.getElementById(product.id+'-plus').style.cursor = 'default'
+         document.getElementById(product.id+'-plus').style.color = 'rgba(0, 0, 0, 0.2)'
+         document.getElementById(product.id+'-plus').style.cursor = 'default'
     }
     if (count === 1){
-        // document.getElementById(product.id+'-minus').style.color = 'rgba(0, 0, 0, 0.2)'
-        // document.getElementById(product.id+'-minus').style.cursor = 'default'
+         document.getElementById(product.id+'-minus').style.color = 'rgba(0, 0, 0, 0.2)'
+         document.getElementById(product.id+'-minus').style.cursor = 'default'
     }
     quantCheck(product.countOnWarehouse, product.id);
     sizeCheck(product.id, discontprice);
@@ -305,7 +320,7 @@ let timeout, interval;
 function clearTimers(){
     clearTimeout(timeout);
     clearInterval(interval);
-    getDeliveryProducts()
+    //getDeliveryProducts()
 }
 
 function minus(idMinus){
@@ -323,7 +338,7 @@ function minus(idMinus){
             let div = document.getElementById(productMinus.id + '-price');
             divPrice.removeChild(div);
             renderPrice(productMinus);
-            calculate()
+           // calculate()
             if (elem.quantity > 0) {
                 timeout = setTimeout(() => {
                     interval = setInterval(() => {
@@ -341,8 +356,8 @@ function minus(idMinus){
             }
         }
     })
-    getDeliveryProducts()
-    calculate();
+    //getDeliveryProducts()
+    //calculate();
 }
 
 function plus(idPlus){
@@ -352,7 +367,7 @@ function plus(idPlus){
     products.forEach(product =>{
         if (product.id === id){
             productPlus = product;
-            amount = product.amount;
+            amount = product.countOnWarehouse;
         }
     });
     sumProducts.forEach(elem => {
@@ -362,7 +377,7 @@ function plus(idPlus){
             let div = document.getElementById(productPlus.id+'-price');
             divPrice.removeChild(div);
             renderPrice(productPlus);
-            calculate()
+           // calculate()
             timeout = setTimeout(()=>{
                 interval = setInterval(()=>{
                     elem.quantity++
@@ -370,7 +385,7 @@ function plus(idPlus){
                     let div = document.getElementById(productPlus.id + '-price');
                     divPrice.removeChild(div);
                     renderPrice(productPlus);
-                    calculate()
+                   // calculate()
                     if (elem.quantity >= productPlus.amount){
                         elem.quantity = productPlus.amount - 1
                     }
@@ -382,8 +397,8 @@ function plus(idPlus){
             }
         }
     });
-    getDeliveryProducts()
-    calculate();
+    //getDeliveryProducts()
+    //calculate();
 }
 
 function deleteFromBucket(el){
@@ -396,8 +411,8 @@ function deleteFromBucket(el){
     document.getElementById('available_list').innerHTML = '';
     document.getElementById('notavailable_list').innerHTML = '';
     checkupProducts();
-    getDeliveryProducts()
-    calculate();
+    //getDeliveryProducts()
+    //calculate();
 }
 
 function deleteFromArr(arr, id){
@@ -428,9 +443,9 @@ function checkupProducts (){
 
 function quantCheck(amount, id){
     if (amount <= 10){
-        let span = document.createElement('span');
+        let span = document.createElement('p');
         span.innerHTML = 'Осталось '+ amount +' шт.'
-        span.classList.add('count__amount');
+        span.classList.add('item-remain');
         document.getElementById(id+'-price').childNodes[0].childNodes[1].after(span);
     }
 }
@@ -461,7 +476,7 @@ function addCheck(el){
             elem.checked = !elem.checked;
     })
     verificationCheck()
-    calculate()
+    //calculate()
 }
 
 function checkCheckbox(id){
@@ -473,12 +488,12 @@ function checkCheckbox(id){
 }
 
 function addAllCheck(){
-    let check = document.getElementById('take-all')
+    let check = document.getElementById('cart_all')
     sumProducts.forEach(elem =>{
         elem.checked = !!check.checked;
     })
     sumProducts.forEach(elem =>{
-        let checkbox = document.getElementById(elem.id+'-check')
+        let checkbox = document.getElementById(elem.id+'-checkbox')
         checkbox.checked = !!check.checked;
     })
     getDeliveryProducts()
@@ -487,9 +502,9 @@ function addAllCheck(){
 
 function verificationCheck(){
     let i = 0;
-    let check = document.getElementById('take-all')
+    let check = document.getElementById('cart_all')
     sumProducts.forEach(elem =>{
-        let checkbox = document.getElementById(elem.id+'-check')
+        let checkbox = document.getElementById(elem.id+'-checkbox')
         if (checkbox.checked){
             i++
         }
