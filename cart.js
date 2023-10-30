@@ -2,14 +2,15 @@ const parent_available_products = document.getElementById('available-products-li
 function renderAvailableProduct(product) {
     console.log(product)
     console.log(parent)
+    let updateProvider = changeProvider(product.provider)
     let newElement = document.createElement("div");
-    newElement.className = "available-item-cart";
+    newElement.className = "item-cart";
     newElement.id = `${product.id}`
     newElement.innerHTML = `<div class="description-product">
                             <div class="item-image">
                                 <div class="checkbox-block">
-                                    <input type="checkbox" checked id=${product.id+"-checkbox"} name=${product.id+"-item"} onclick="addCheck(id)">
-                                    <label for=${product.id+"-checkbox"}></label>
+                                    <input type="checkbox" checked id=${product.id + "-checkbox"} name=${product.id + "-item"} onclick="addCheck(id)">
+                                    <label for=${product.id + "-checkbox"}></label>
                                 </div>
                                 <div class="container-item-image">
                                     <img src=${product.image} alt=""/>
@@ -17,10 +18,15 @@ function renderAvailableProduct(product) {
                             </div>
                             <div class="specifications-item">
                                 <h5>${product.name}</h5>
-                                  <p class="item-color-and-size" id=${product.id+"-color-and-size"} style="display: none"></p>
+                                  <p class="item-color-and-size" id=${product.id + "-color-and-size"} style="display: none"></p>
                                 <div>
                                     <p>${product.location}</p>
-                                    <p>${product.provider}<span><img src="assets/icons/icon-info.svg"></span></p>
+                                    <p class="get-info-popup">${product.provider}<span><img src="assets/icons/icon-info.svg"/></span></p>
+                                    <section class="popup-info">
+                                        <h4>${updateProvider}</h4>
+                                        <span>ОГРН: ${product.OGRN}</span>
+                                        <span>${product.address}</span>
+                                    </section>
                                 </div>  
                             </div>
                         </div>
@@ -29,6 +35,7 @@ function renderAvailableProduct(product) {
     parent_available_products.append(newElement)
   //  addDescription(product);
     renderPrice(product, sumProducts);
+    addSizeAndColor(product);
     checkCheckbox(product.id);
 }
 // products.forEach(product => {
@@ -57,7 +64,7 @@ function addSizeAndColor(product){
 ////////////////////////////////////////////////////////////////////
 
 const cartCircle = document.getElementById('cart-counter')
-const missingProducts = document.getElementById('missing-products')
+const missingProducts = document.getElementById('missing-products-list')
 ////это для мобилки
 const bucketNav = document.getElementById('bucket-counter-nav')
 
@@ -90,11 +97,10 @@ function dropNotAvail(){
                 quantity: 1,
                 checked: false});
             renderAvailableProduct(product);
-            addSizeAndColor(product)
             cartCount++;
 
         } else {
-           // renderNotAvailable(product);
+            renderNotAvailable(product);
             missingCount++
         }
     });
@@ -184,10 +190,10 @@ function renderPrice(product){
                                     </div>
                                     <div class="fav-del-product" id=${product.id+"-price-icons"}>
                                         <button id="to_favorite">
-                                            <img src="assets/icons/to_favourites.svg">
+                                            <img src="assets/icons/to_favourites.svg"/>
                                         </button>
                                         <button id="to-delete">
-                                            <img src="assets/icons/delet.svg">
+                                            <img src="assets/icons/delet.svg"/>
                                         </button>
                                     </div>
                                 </div>
@@ -228,25 +234,45 @@ function renderPrice(product){
 }
 
 ///////потом
-// function renderNotAvailable(product){
-//     let div = document.createElement('div');
-//     div.className = "product__panel";
-//     div.id = product.id;
-//     div.innerHTML = '<div class="product__panel-card">' +
-//         '               <img src="'+ product.photo +'" alt="'+product.name+'">' +
-//         '               <div class="product__panel-description">' +
-//         '                   <h4>'+ product.name + '</h4>' +
-//         '                   <div id="'+product.id+'-description" class="product__panel-description__add"></div>' +
-//         '               </div>' +
-//         '           </div>' +
-//         '           <div class="notavailble-icons">' +
-//         '               <div class="price__icons" id="'+product.id+'-price-icons">' +
-//         '                   '+like+''+trash+'' +
-//         '               </div>' +
-//         '           </div>';
-//     missingProducts.append(div);
-//     addLikeAndTrash(product.id)
-// }
+function renderNotAvailable(product){
+    let div = document.createElement('div');
+    div.className = "item-cart";
+    div.id = product.id;
+    div.innerHTML = `<div class="description-product">
+                            <div class="item-image">
+                                <div class="container-item-image">
+                                    <img src=${product.image} alt="" style="-webkit-filter: grayscale(100%); filter: grayscale(100%);"/>
+                                </div>
+                            </div>
+                            <div class="specifications-item" style="width: 18rem !important;">
+                                <h5 style="color: var(--gray-blue)">${product.name}</h5>
+                                  <p class="item-color-and-size" style="color: var(--gray-blue)" id=${product.id + "-color-and-size"} style="display: none"></p>
+                            </div>
+                            <div class="fav-del-not-avail-product" id=${product.id+"-price-icons"}>
+                                        <button id="to_favorite">
+                                            <img src="assets/icons/to_favourites.svg"/>
+                                        </button>
+                                        <button id="to-delete">
+                                            <img src="assets/icons/delet.svg"/>
+                                        </button>
+                            </div>
+                        </div>`
+    // div.innerHTML = '<div class="product__panel-card">' +
+    //     '               <img src="'+ product.photo +'" alt="'+product.name+'">' +
+    //     '               <div class="product__panel-description">' +
+    //     '                   <h4>'+ product.name + '</h4>' +
+    //     '                   <div id="'+product.id+'-description" class="product__panel-description__add"></div>' +
+    //     '               </div>' +
+    //     '           </div>' +
+    //     '           <div class="notavailble-icons">' +
+    //     '               <div class="price__icons" id="'+product.id+'-price-icons">' +
+    //     '                   '+like+''+trash+'' +
+    //     '               </div>' +
+    //     '           </div>';
+    missingProducts.append(div);
+    addSizeAndColor(product);
+    //addLikeAndTrash(product.id)
+}
 
 function renderHead(){
     if (missingCount > 0) {
@@ -289,30 +315,27 @@ function normalizeCountForm (number, words_arr) {
 //     }
 // }
 
-function popupInfo(id){
-    document.getElementById(id+'-content').classList.toggle("show");
-
-}
-
-function renderSeller(n){
-    let arr = n.split(' ');
-    let seller = "";
-    const el = '"';
-    if (arr[0] === "ООО"){
+function changeProvider(line){
+    let arr = line.split(' ');
+    let provider = "";
+    const item = '"';
+    if (arr[0] === "OOO"){
         for (let i=1; i<arr.length; i++){
             arr[i] = arr[i].toUpperCase();
+            console.log(arr[i].toUpperCase())
         }
-        arr.splice(1, 0, el);
-        arr.push(el)
+        arr.splice(1, 0, item);
+        arr.push(item)
+
     }
     for (let i=0; i<arr.length; i++){
-        if (arr[i] !== el && i < arr.length - 2){
-            seller += arr[i] + " ";
+        if (arr[i] !== item && i < arr.length - 2){
+            provider += arr[i] + " ";
         } else {
-            seller += arr[i];
+            provider += arr[i];
         }
     }
-    return seller;
+    return provider;
 }
 
 let timeout, interval;

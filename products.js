@@ -11,7 +11,8 @@ products = [
         price: 1051,
         discount: 40.33,
         distance: 3,
-        address: ""
+        address: "129337, Москва, улица Красная Сосна, 2, корпус 1, стр. 1, помещение 2, офис 34",
+        OGRN: 5167746237148,
     },
     // скидку покупателям 10% добавить?
     {
@@ -26,12 +27,13 @@ products = [
         price: 2300047,
         discount: 8.7,
         distance: 30,
-        address: ""
+        address: "129337, Москва, улица Красная Сосна, 2, корпус 1, стр. 1, помещение 2, офис 34",
+        OGRN: 5167746237148,
     },
     {
         id: 12555553,
         image: "assets/images/colored_pencils.png",
-        name: "Карандаши цветные Faber-Castell \"Замок\", набор 24 цвета, заточенные, шестигранные, Faber-Castell",
+        name: "Карандаши цветные Faber-Castell \"Замок\", набор 24 цвета, заточенные, шестигранные, Faber-Castell",
         color: "",
         size: "",
         location: "Коледино WB",
@@ -40,7 +42,54 @@ products = [
         price: 950,
         discount: 38,
         distance: 3,
-        address: ""
+        address: "129337, Москва, улица Красная Сосна, 2, корпус 1, стр. 1, помещение 2, офис 34",
+        OGRN: 5167746237148,
+    },
+    {
+        id: 12555554,
+        image: "assets/images/t-shirt_man.png",
+        name: "Футболка UZcotton мужская",
+        color: "белый",
+        size: "56",
+        location: "Коледино WB",
+        provider: "OOO Вайлдберриз",
+        countOnWarehouse: 0,
+        price: 1051,
+        discount: 40.33,
+        distance: 3,
+        address: "129337, Москва, улица Красная Сосна, 2, корпус 1, стр. 1, помещение 2, офис 34",
+        OGRN: 5167746237148,
+    },
+    // скидку покупателям 10% добавить?
+    {
+        id: 12555555,
+        image: "assets/images/silicone_case.png",
+        name: "Силиконовый чехол картхолдер (отверстия) для карт, прозрачный кейс бампер на Apple iPhone XR, MobiSafe",
+        color: "прозрачный",
+        size: "",
+        location: "Коледино WB",
+        provider: "OOO Мегапрофстиль",
+        countOnWarehouse: 0,
+        price: 2300047,
+        discount: 8.7,
+        distance: 30,
+        address: "129337, Москва, улица Красная Сосна, 2, корпус 1, стр. 1, помещение 2, офис 34",
+        OGRN: 5167746237148,
+    },
+    {
+        id: 12555556,
+        image: "assets/images/colored_pencils.png",
+        name: "Карандаши цветные Faber-Castell \"Замок\", набор 24 цвета, заточенные, шестигранные, Faber-Castell",
+        color: "",
+        size: "",
+        location: "Коледино WB",
+        provider: "OOO Вайлдберриз",
+        countOnWarehouse: 0,
+        price: 950,
+        discount: 38,
+        distance: 3,
+        address: "129337, Москва, улица Красная Сосна, 2, корпус 1, стр. 1, помещение 2, офис 34",
+        OGRN: 5167746237148,
     }
 ];
 // products = [
