@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="globalStyles.css">
     <link rel="stylesheet" href="styles/header.css">
     <link rel="stylesheet" href="styles/cartProducts.css">
+    <link rel="stylesheet" href="styles/decoration.css">
 </head>
 <body>
 <header class="header-container">
@@ -99,10 +100,13 @@
                 </div>
             </div>
             <div class="missing-products">
-                <div class="manage__bucket__control" id="notavail-control">
-                    <span id="notavail-list-head"></span>
-                    <img onclick="dropNotAvail()" class="dropbtn" src="assets/icons/arrow.svg" id="dropbtn-miss">
+                <div class="header-missing">
+                    <span id="missing-head"></span>
+                    <div>
+                        <img onclick="dropNotAvail()" class="dropbtn" src="assets/icons/arrow.svg" id="dropbtn-miss">
+                    </div>
                 </div>
+
                 <div class="dropdown">
                     <div class="cards-product" id="missing-products-list">
                         <hr>
@@ -110,54 +114,98 @@
                 </div>
             </div>
             <div class="decoration-container">
-                <div class="header-decoration-block">
-                    <h3>Способ доставки</h3>
-                    <button>Изменить</button>
-                </div>
-                <div class="delivery-method">
-                    <div class="dilivery-point">
-                        <h5>Пункт выдачи</h5>
-                        <p></p>
+                <div class="delivery-method-container">
+                    <div class="header-decoration-block">
+                        <h3>Способ доставки</h3>
+                        <button class="change-btn">Изменить</button>
                     </div>
-                    <div class="dilivery-price">
-                        <h5>Пункт выдачи</h5>
-                        <p></p>
-                    </div>
-                    <div class="dilivery-dates">
-                        <div class="dilivery-date">
-                            <h5>5-6 февраля</h5>
-                            <img src=""/>
+                    <div class="delivery-information">
+<!--                        <div>-->
+<!--                            <h5>Пункт выдачи</h5>-->
+<!--                            <h5>Стоимость доставки</h5>-->
+<!--                            <h5>5-6 февраля</h5>-->
+<!--                            <h5>7-8 февраля</h5>-->
+<!--                        </div>-->
+                        <div class="delivery-point">
+                            <h5>Пункт выдачи</h5>
+                            <section class="pickup-point">
+                                <p>Бишкек, улица Ахматбека Суюмбаева, 12/1</p>
+                                <div class="pickup-point-info">
+                                    <span><img src="assets/icons/star_fill.svg"/>4.99</span>
+                                    <span>Ежедневно с 10 до 21 </span>
+                                </div>
+                            </section>
                         </div>
-                        <div class="dilivery-date">
-                            <h5>7-8 февраля</h5>
-                            <img src=""/>
+                        <div class="delivery-point">
+                            <h5>Стоимость доставки</h5>
+                            <section>
+                                <p>Бесплатно</p>
+                            </section>
+                        </div>
+                        <div class="delivery-point">
+                            <h5>5—6 февраля</h5>
+                            <section class="delivery-date-images">
+                                <div><img src="assets/images/t-shirt_man.png"></div>
+                                <div><img src="assets/images/silicone_case.png"></div>
+                                <div><img src="assets/images/colored_pencils.png"></div>
+                            </section>
+                        </div>
+                        <div class="delivery-point">
+                            <h5>7—8 февраля</h5>
+                            <section class="delivery-date-images">
+                                <div><img src="assets/images/silicone_case.png"></div>
+                            </section>
+                        </div>
+<!--                        <div class="dilivery-price">-->
+<!--                            <h5>Стоимость доставки</h5>-->
+<!--                            <p></p>-->
+<!--                        </div>-->
+<!--                        <div class="dilivery-dates">-->
+<!--                            <div class="dilivery-date">-->
+<!--                                <h5>5—6 февраля</h5>-->
+<!--                                <img src=""/>-->
+<!--                            </div>-->
+<!--                            <div class="dilivery-date">-->
+<!--                                <h5>7—8 февраля</h5>-->
+<!--                                <img src=""/>-->
+<!--                            </div>-->
+<!--                        </div>-->
+                        <div class="delivery-note">
+                            <img src="assets/icons/price_shipping.svg"/>
+                            <p>Обратная доставка товаров на склад при отказе — <span>бесплатно</span></p>
                         </div>
                     </div>
-                    <div class="dilivery-note">
-                        <img src=""/>
-                        <p>Обратная доставка товаров на склад при отказе - <span>бесплатно</span></p>
-                    </div>
                 </div>
-                <div class="payment-method">
+                <div class="payment-method-container">
                     <div class="header-decoration-block">
                         <h3>Способ оплаты</h3>
-                        <button>Изменить</button>
+                        <button class="change-btn">Изменить</button>
                     </div>
                     <div class="bank-card">
 
                     </div>
                     <p class="payment-note">Спишем оплату с карты при получении</p>
                 </div>
-                <div class="recipient">
+                <div class="recipient-container">
                     <div class="header-decoration-block">
                         <h3>Получатель</h3>
                     </div>
                     <div class="recipient-inputs">
-                        <input class="recipient-input-name" type="text" placeholder="Имя"/>
-                        <input class="recipient-input-surname" type="text" placeholder="Фамилия"/>
-                        <input class="recipient-input-email" type="text" placeholder="Имя"/>
-                        <input class="recipient-input-phone" type="text" placeholder="Имя"/>
-                        <input class="recipient-input-inn" type="text" placeholder="Имя"/>
+                        <section>
+                            <div class="block-input">
+                                <input type="text" class="input-field" placeholder="Имя" name="name" id='name' required />
+                                <label for="name" class="input-label">Имя</label>
+                            </div>
+                            <div class="block-input">
+                                <input type="text" class="input-field" placeholder="Фамилия" name="surname" id='surname' required />
+                                <label for="surname" class="input-label">Фамилия</label>
+                            </div>
+                        </section>
+                        <section>
+                            <input class="recipient-input-email" type="text" placeholder="Почта"/>
+                            <input class="recipient-input-phone" type="text" placeholder="Телефон"/>
+                            <input class="recipient-input-inn" type="text" placeholder="ИНН"/>
+                        </section>
                     </div>
                 </div>
             </div>

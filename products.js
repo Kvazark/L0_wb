@@ -38,7 +38,7 @@ products = [
         size: "",
         location: "Коледино WB",
         provider: "OOO Вайлдберриз",
-        countOnWarehouse: 20,
+        countOnWarehouse: 2,
         price: 950,
         discount: 38,
         distance: 3,

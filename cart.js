@@ -70,7 +70,7 @@ const bucketNav = document.getElementById('bucket-counter-nav')
 
 let sumProducts = [];
 let cartCount = 0;
-let missingCount = 0;
+var missingCount = 0;
 
 
 function dropAvail() {
@@ -84,8 +84,13 @@ function dropAvail() {
 }
 
 function dropNotAvail(){
-    document.getElementById("missing-products-list").classList.toggle("hide");
-    document.getElementById("dropbtn-miss").classList.toggle("close")
+    if(document.getElementById("missing-products-list").style.display === 'none'){
+        document.getElementById("missing-products-list").style.display = 'flex';
+        document.getElementById("dropbtn-miss").classList.toggle("close")
+    }else{
+        document.getElementById("missing-products-list").style.display = 'none';
+        document.getElementById("dropbtn-miss").classList.toggle("close")
+    }
 }
 
 (function() {
@@ -105,7 +110,7 @@ function dropNotAvail(){
         }
     });
     cartCountCircle(cartCount);
-    //renderHead()
+    renderHead()
 })();
 
 
@@ -179,7 +184,6 @@ function renderPrice(product){
     })
     let divPrice = document.getElementById(`${product.id}`);
     let div = document.createElement('div');
-    ////////////////////////////////////////////////////////
     div.className = "details-product";
     div.id = product.id+'-price';
     div.innerHTML = `<div class="details-count-product">
@@ -285,7 +289,7 @@ function renderHead(){
         }
         let words_arr = ['товар', 'товара', 'товаров'];
         second_word = normalizeCountForm(missingCount, words_arr)
-        document.getElementById('notavail-list-head').innerHTML = first_word + '<span> • </span>' + missingCount + ' ' + second_word
+        document.getElementById('missing-head').innerHTML = first_word + '<span> · </span>' + missingCount + ' ' + second_word
     }
 }
 
@@ -322,7 +326,6 @@ function changeProvider(line){
     if (arr[0] === "OOO"){
         for (let i=1; i<arr.length; i++){
             arr[i] = arr[i].toUpperCase();
-            console.log(arr[i].toUpperCase())
         }
         arr.splice(1, 0, item);
         arr.push(item)

@@ -1,0 +1,173 @@
+.delivery-method-container{
+    display: flex;
+    width: 100%;
+    padding: 1rem 1.5rem 1.5rem 1.5rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    border-radius: 16px;
+    background: #FFF;
+}
+.header-decoration-block{
+    display: flex;
+    /*padding: 0px 1.5rem;*/
+    align-items: flex-start;
+    gap: 0.625rem;
+    align-self: stretch;
+    justify-content: space-between;
+}
+.header-decoration-block h3{
+    color: #000;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 32px;
+    letter-spacing: -0.24px;
+}
+.change-btn{
+    display: flex;
+    padding: 0.5rem 0.125rem 0 0;
+    align-items: flex-start;
+    align-self: stretch;
+    color: var(--magenta);
+    text-align: right;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.5rem;
+}
+.delivery-method-container h5{
+    color:  #000;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.5rem;
+    width: 10rem;
+}
+.delivery-information{
+    display: flex;
+    flex-direction: column;
+    gap: 1.05rem;
+    align-items: flex-start;
+    align-self: stretch;
+    width: 100%;
+}
+.delivery-point{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 1.5rem;
+}
+.pickup-point{
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+.pickup-point-info{
+    display: flex;
+    gap: 0.5rem;
+}
+.pickup-point-info p{
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+}
+.pickup-point-info span{
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 14px;
+}
+.pickup-point-info span img{
+    width: 12px;
+    height: 12px;
+    margin-right: 0.25rem;
+}
+.delivery-date-images{
+    display: flex;
+    height: 3.5rem;
+    align-items: flex-start;
+    align-self: stretch;
+    gap: 0.5rem;
+}
+.delivery-date-images div{
+    overflow: hidden;
+    border-radius: 8px;
+    width: 2.5rem;
+    height: 3.5rem;
+}
+.delivery-date-images img{
+    object-fit: cover;
+    width: 100%;
+}
+.delivery-note{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    align-self: stretch;
+    margin-top: 8px;
+}
+.delivery-note img{
+    width: 22px;
+    height: 22px;
+}
+.delivery-note p{
+    color: #000;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+}
+.delivery-note span{
+    color: var(--green)
+}
+/*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+.payment-method-container{
+    display: flex;
+    padding: 1rem 1.5rem 1.5rem 1.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    align-self: stretch;
+    border-radius: 16px;
+    background: #FFF;
+}
+/*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+.recipient-container{
+    display: flex;
+    padding: 1rem 1.5rem 1.5rem 1.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    border-radius: 16px;
+    background: #FFF;
+    width: 100%;
+}
+.recipient-inputs{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.recipient-inputs input{
+    background: none;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid var(--gray-blue);
+    display: flex;
+    height: 4rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    flex: 1 0 0;
+}
+.recipient-inputs input:focus {
+    outline: none;
+}
+.recipient-inputs section{
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    align-self: stretch;
+}
