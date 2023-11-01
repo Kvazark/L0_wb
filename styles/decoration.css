@@ -101,6 +101,21 @@
     object-fit: cover;
     width: 100%;
 }
+.product-delivery{
+    position: relative;
+}
+.product-delivery div{
+    display: flex;
+    height: 16px;
+    transform: rotate(0.065deg);
+    padding: 1px 2px 0px 2px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px;
+    background: var(--red);
+    z-index: 1000;
+    position: absolute;
+}
 .delivery-note{
     display: flex;
     align-items: center;

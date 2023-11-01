@@ -10,7 +10,7 @@ var missingCount = 0;
 
 
 function renderAvailableProduct(product) {
-      let updateProvider = changeProvider(product.provider)
+    let updateProvider = changeProvider(product.provider)
     let newElement = document.createElement("div");
     newElement.className = "item-cart";
     newElement.id = `${product.id}`
@@ -204,7 +204,7 @@ function dropNotAvail(){
                 price: product.price,
                 discount: product.discount,
                 quantity: 1,
-                checked: false});
+                checked: true});
             renderAvailableProduct(product);
             cartCount++;
 
@@ -214,7 +214,9 @@ function dropNotAvail(){
         }
     });
     cartCountCircle(cartCount);
-    renderHead()
+    renderHead();
+    verificationCheck();
+    getDeliveryProducts();
 })();
 
 function cartCountCircle(n){
@@ -350,7 +352,7 @@ function minus(idMinus){
            //  }
         }
     })
-    //getDeliveryProducts()
+    getDeliveryProducts()
     //calculate();
 }
 function plus(idPlus){
@@ -390,7 +392,7 @@ function plus(idPlus){
            //  }
         }
     });
-    //getDeliveryProducts()
+    getDeliveryProducts()
     //calculate();
 }
 
@@ -475,7 +477,7 @@ function addCheck(el){
 function checkCheckbox(id){
     sumProducts.forEach(el => {
         if (el.id === id && el.checked){
-            document.getElementById(id+'-check').checked = true
+            document.getElementById(id+'-checkbox').checked = true
         }
     })
 }
@@ -489,7 +491,7 @@ function addAllCheck(){
         let checkbox = document.getElementById(elem.id+'-checkbox')
         checkbox.checked = !!check.checked;
     })
-    //getDeliveryProducts()
+    getDeliveryProducts()
     //calculate()
 }
 
@@ -508,7 +510,7 @@ function verificationCheck(){
     if (i < sumProducts.length){
         check.checked = false
     }
-    //getDeliveryProducts()
+    getDeliveryProducts()
 }
 // function addDescription(product){
 //     const description = document.getElementById(product.id+'-description')
