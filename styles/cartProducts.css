@@ -19,7 +19,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 2.5rem;
+    gap: 1.7rem;
     width: 100%;
 }
 /*///available-products/////*/
@@ -88,6 +88,7 @@
     gap: 1.25rem;
     align-self: stretch;
     width: 100%;
+    margin-top: 1rem;
 }
 .item-cart {
     display: flex;
@@ -99,14 +100,14 @@
 
 .description-product{
     display: flex;
-    padding-top: 12px;
+    padding-bottom: 12px;
     align-items: flex-start;
     gap: 1rem;
     flex: 1 0 0;
 }
 .details-product{
     display: flex;
-    padding-top: 9px;
+    padding-top: 0;
     align-items: flex-start;
     gap: 1rem;
     align-self: stretch;
@@ -233,7 +234,6 @@
 }
 .details-count-product{
     display: flex;
-    padding-top: 3px;
     flex-direction: column;
     align-items: flex-end;
     gap: 0.5rem;
@@ -246,14 +246,13 @@
     font-weight: 400;
     line-height: 16px;
     width: 100%;
-    margin-top: 2px;
 }
 .counter-btn{
     display: flex;
     background-color:  #FFF;
     color: #000;
     border-radius: 8px;
-    padding: 0 5px 0 4px;
+    padding: 0 4px 0 5px;
     width: 6.25rem;
     height: 2.75rem;
 }
@@ -269,7 +268,7 @@
     font-weight: 400;
     line-height: 24px;
     letter-spacing: -0.2px;
-    padding: 6px 6px 6px 7px;
+    padding: 0 6px 6px 7px;
 }
 .counter-btn span{
     font-size: 20px;
@@ -288,6 +287,7 @@
     text-align: center;
     flex-shrink: 0;
     border: none;
+    padding: 0 0 5px 3px;
 }
 .counter-btn p{
     display: flex;
@@ -318,12 +318,13 @@
     color:  #000;
     text-align: right;
     padding-right: 0.1rem;
+    margin-top: -0.3rem;
 }
 .final-price-1{
     font-size: 20px;
     font-style: normal;
     font-weight: 700;
-    line-height: 30px;
+    line-height: 20px;
     letter-spacing: -0.2px;
 }
 .final-price-2{

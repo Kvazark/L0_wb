@@ -20,18 +20,22 @@ personalData = {
         },],
     cards: [{
         number: "1234 56•• •••• 1234",
+        expirationDate:"01/30",
         type: "assets/icons/card_visa.svg"
         }, {
         number: "1234 56•• •••• 1234",
-        type: "assets/icons/card_mir.svg"
+        type: "assets/icons/card_mir.svg",
+        expirationDate:"01/30",
          },
         {
             number: "1234 56•• •••• 1234",
-            type: "assets/icons/card_mastercard.svg"
+            type: "assets/icons/card_mastercard.svg",
+            expirationDate:"01/30",
         },
         {
             number: "1234 56•• •••• 1234",
-            type: "assets/icons/card_maestro.svg"
+            type: "assets/icons/card_maestro.svg",
+            expirationDate:"01/30",
         }
     ]
 };

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles/header.css">
     <link rel="stylesheet" href="styles/cartProducts.css">
     <link rel="stylesheet" href="styles/decoration.css">
+    <link rel="stylesheet" href="styles/totalPrice.css">
 </head>
 <body>
 <header class="header-container">
@@ -182,7 +183,8 @@
                         <button class="change-btn">Изменить</button>
                     </div>
                     <div class="bank-card">
-
+                        <img src="assets/icons/card_mir.svg">
+                        <p><span>1234 56•• •••• 1234</span><span>01/30</span></p>
                     </div>
                     <p class="payment-note">Спишем оплату с карты при получении</p>
                 </div>
@@ -192,19 +194,33 @@
                     </div>
                     <div class="recipient-inputs">
                         <section>
-                            <div class="block-input">
-                                <input type="text" class="input-field" placeholder="Имя" name="name" id='name' required />
-                                <label for="name" class="input-label">Имя</label>
+                            <div class="block-input" id="name">
+                                <input type="text" class="input-field" name="name" placeholder="Имя" id='name-input' required />
+                                <label for="name-input" class="input-label">Имя</label>
+                                <span></span>
                             </div>
-                            <div class="block-input">
-                                <input type="text" class="input-field" placeholder="Фамилия" name="surname" id='surname' required />
-                                <label for="surname" class="input-label">Фамилия</label>
+                            <div class="block-input" id="surname">
+                                <input type="text" class="input-field" placeholder="Фамилия" name="surname" id='surname-input' required />
+                                <label for="surname-input" class="input-label">Фамилия</label>
+                                <span></span>
                             </div>
                         </section>
                         <section>
-                            <input class="recipient-input-email" type="text" placeholder="Почта"/>
-                            <input class="recipient-input-phone" type="text" placeholder="Телефон"/>
-                            <input class="recipient-input-inn" type="text" placeholder="ИНН"/>
+                            <div class="block-input" id="email">
+                                <input type="email"  name="email" id='email-input' placeholder="Почта" required />
+                                <label for="email-input" class="input-label">Почта</label>
+                                <span></span>
+                            </div>
+                            <div class="block-input" id="phone">
+                                <input type="text"  name="phone" id='phone-input' placeholder="Телефон" required data-phone-pattern = '+7 ___ ___-__-__' />
+                                <label for="phone-input" class="input-label">Телефон</label>
+                                <span></span>
+                            </div>
+                            <div class="block-input" id="INN">
+                                <input class="input-without-required" type="number"  name="INN" id='INN-input' required placeholder="ИНН" />
+                                <label for="INN-input" class="input-label">ИНН</label>
+                                <p>Для таможенного оформления</p>
+                            </div>
                         </section>
                     </div>
                 </div>
@@ -212,16 +228,67 @@
         </div>
     </section>
     <section class="price-container">
-        hdfhdfh
+        <section class="cost-of-the-order">
+            <section class="price-order">
+                <div>
+                    <h3>Итого</h3>
+                    <h3>1016 сом</h3>
+                </div>
+                <div>
+                    <p>4 товара</p>
+                    <p>2001 сом</p>
+                </div>
+                <div>
+                    <p>Скидка</p>
+                    <p>-985 сом</p>
+                </div>
+                <div>
+                    <p>Доставка</p>
+                    <p>Бесплатно</p>
+                </div>
+            </section>
+            <section class="delivery-order">
+                <div class="point-courier-order"></div>
+                <div class="delivery-order-note"></div>
+            </section>
+            <section class="paymet-order">
+                <div>
+                    <div class="paymet-order-header">
+                        <h5>Оплата картой</h5>
+                        <div><img src="assets/icons/edit_pencil.svg"/></div>
+                    </div>
+                    <div>
+                        <img src="assets/icons/card_mir.svg">
+                        <p>1234 12•• •••• 1234</p>
+                    </div>
+                </div>
+                <div class="checkbox-order">
+                    <div class="checkbox-block">
+                        <input type="checkbox" checked id="write-off-immediately" name="cart_all" onclick="">
+                        <label for="write-off-immediately"></label>
+                        <p style="font-size: 13px;">Списать оплату сразу</p>
+                    </div>
+                </div>
+            </section>
+        </section>
+        <div class="block-to-pay">
+            <button>Оплатить <span>1 016 сом</span></button>
+            <div class="checkbox-agreement">
+                <input type="checkbox" checked id="agreement" name="cart_all" onclick="">
+                <p style="font-size: 13px;">Соглашаюсь с правилами пользования торговой площадкой и возврата</p>
+            </div>
+        </div>
     </section>
 </main>
 <section class="footer">
-
+    <p>© 2022  ООО «Товары и точка»</p>
 </section>
 </body>
 <script src="products.js"></script>
 <script src="personalData.js"></script>
 <script src="cartRender.js"></script>
+<script src="validationInputs.js"></script>
+<script src="deliveryRender.js"></script>
 </html>
 <!--                    <div class="card-cart-item">-->
 <!--                        <div class="description-product">-->
