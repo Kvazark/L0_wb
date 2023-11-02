@@ -25,10 +25,11 @@ products = [
         countOnWarehouse: 100,
         price: 2300047,
         discount: -1.31,
-        distance: 30,
+        distance: 5,
         address: "129337, Москва, улица Красная Сосна, 2, корпус 1, стр. 1, помещение 2, офис 34",
         OGRN: 5167746237148,
     },
+
     {
         id: 12555553,
         image: "assets/images/colored_pencils.png",

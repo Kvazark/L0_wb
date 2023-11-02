@@ -1,3 +1,8 @@
+@media (min-width: 1024px) {
+    .header{
+        padding: 1rem 1.5rem 1rem 1.5rem;
+    }
+}
 .header-container{
     flex-direction: column;
     align-items: flex-start;
@@ -13,7 +18,7 @@
     color: #FFFFFF;
     display: flex;
     flex-direction: row;
-    padding: 1rem 1.5rem 1rem 1.5rem;
+    padding: 1rem 0.5rem 1rem 1.5rem;
     align-items: center;
     gap: 1.9rem;
     align-self: stretch;

@@ -45,17 +45,20 @@ input::-webkit-inner-spin-button {
 input[type=number] {
     -moz-appearance: textfield;
 }
-
+@media (min-width: 1024px) {
+    .content{
+        padding: 0 1.5rem  3.5% 1.5rem;
+    }
+}
 .content{
     border-radius: 22px;
     background: var(--smoky);
     display: flex;
     flex-direction: row;
-    padding: 0 1.5rem  3.5% 1.5rem;
     align-items: flex-start;
     gap: 2rem;
     align-self: stretch;
-    width: 100vw;
+    /*width: 100vw;*/
 }
 .checkbox-block{
     display: flex;

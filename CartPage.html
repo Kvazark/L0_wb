@@ -165,10 +165,6 @@
 <!--                                <img src=""/>-->
 <!--                            </div>-->
 <!--                        </div>-->
-                        <div class="delivery-note">
-                            <img src="assets/icons/price_shipping.svg"/>
-                            <p>Обратная доставка товаров на склад при отказе — <span>бесплатно</span></p>
-                        </div>
                     </div>
                 </div>
                 <div class="payment-method-container">
@@ -221,36 +217,48 @@
             </div>
         </div>
     </section>
-    <section class="price-container">
+    <section class="making-order-container">
         <section class="cost-of-the-order">
-            <section class="price-order">
-                <div>
-                    <h3>Итого</h3>
-                    <h3>1016 сом</h3>
+            <section class="price-order-container">
+                <div class="header-price-order">
+                    <h2>Итого</h2>
+                    <h2>1016 <span>сом</span></h2>
                 </div>
-                <div>
-                    <p>4 товара</p>
-                    <p>2001 сом</p>
-                </div>
-                <div>
-                    <p>Скидка</p>
-                    <p>-985 сом</p>
-                </div>
-                <div>
-                    <p>Доставка</p>
-                    <p>Бесплатно</p>
-                </div>
+                <section>
+                    <div>
+                        <p>4 товара</p>
+                        <p>2001 сом</p>
+                    </div>
+                    <div>
+                        <p>Скидка</p>
+                        <p>−985 сом</p>
+                    </div>
+                    <div>
+                        <p>Доставка</p>
+                        <p>Бесплатно</p>
+                    </div>
+                </section>
             </section>
             <section class="delivery-order">
-                <div class="point-courier-order"></div>
-                <div class="delivery-order-note"></div>
+                <div class="point-courier-order">
+                    <section>
+                        <p>Доставка в пункт выдачи</p>
+                        <img src="assets/icons/edit_pencil.svg">
+                    </section>
+                    <p>Бишкек, улица Ахматбека Суюмбаева, 12/1</p>
+                    <span>5–8 фев</span>
+                </div>
+                <div class="delivery-order-note">
+                    <img src="assets/icons/price_shipping.svg"/>
+                    <p class="description-note-delivery">Обратная доставка товаров на склад при отказе — <span>бесплатно</span></p>
+                </div>
             </section>
             <section class="paymet-order">
-                <div>
-                    <div class="paymet-order-header">
-                        <h5>Оплата картой</h5>
-                        <div><img src="assets/icons/edit_pencil.svg"/></div>
-                    </div>
+                <div class="paymet-order-details">
+                    <section>
+                        <p>Оплата картой</p>
+                        <img src="assets/icons/edit_pencil.svg"/>
+                    </section>
                     <div>
                         <img src="assets/icons/card_mir.svg">
                         <p>1234 12•• •••• 1234</p>
@@ -258,18 +266,19 @@
                 </div>
                 <div class="checkbox-order">
                     <div class="checkbox-block">
-                        <input type="checkbox" checked id="write-off-immediately" name="cart_all" onclick="">
+                        <input type="checkbox" id="write-off-immediately" name="cart_all" onclick="togglePaymentMessage()">
                         <label for="write-off-immediately"></label>
                         <p style="font-size: 13px;">Списать оплату сразу</p>
                     </div>
+                    <span id="payment-message">Спишем оплату с карты при получении</span>
                 </div>
             </section>
         </section>
         <div class="block-to-pay">
-            <button>Оплатить <span>1 016 сом</span></button>
+            <button><span id="name-order-button">Заказать</span></button>
             <div class="checkbox-agreement">
-                <input type="checkbox" checked id="agreement" name="cart_all" onclick="">
-                <p style="font-size: 13px;">Соглашаюсь с правилами пользования торговой площадкой и возврата</p>
+                <img src="assets/icons/arrow_checkbox.svg">
+                <p>Соглашаюсь <a >с правилами пользования торговой площадкой</a> и возврата</p>
             </div>
         </div>
     </section>
@@ -283,6 +292,7 @@
 <script src="deliveryRender.js"></script>
 <script src="validationInputs.js"></script>
 <script src="cartRender.js"></script>
+<script src="renderOrder.js"></script>
 
 
 </html>

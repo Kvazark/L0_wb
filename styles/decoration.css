@@ -127,16 +127,46 @@
     width: 22px;
     height: 22px;
 }
-.delivery-note p{
+.description-note-delivery{
     color: #000;
     font-size: 13px;
     font-style: normal;
     font-weight: 400;
     line-height: 16px;
+    cursor: pointer;
+    position: relative;
 }
-.delivery-note span{
+.description-note-delivery span{
+    border-bottom: 1px dashed #0CB47733;
     color: var(--green)
 }
+.popup-info-note-delivery{
+    z-index: 1;
+    cursor: pointer;
+    position: relative;
+}
+.description-note-delivery:hover + .popup-info-note-delivery {
+    opacity: 1;
+    visibility: visible;
+}
+.popup-info-note-delivery {
+    width: 21.5rem;
+    padding: 0.625rem 1rem 0.875rem 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    background: #FFF;
+    display: flex;
+    border-radius: 8px;
+    box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.30), 0px 2px 10px 0px rgba(0, 0, 0, 0.15);
+    position: absolute;
+    margin-top: 7rem;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.15s ease-in;
+    z-index: 1;
+    left: 20%;
+}
+
 /*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 .payment-method-container{
     display: flex;

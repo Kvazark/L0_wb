@@ -64,29 +64,29 @@ function renderPrice(product){
     div.className = "details-product";
     div.id = product.id+'-price';
     div.innerHTML = `<div class="details-count-product">
-                                    <div class="counter-btn">
-                                        <button id=${product.id+"-minus"} onclick="minus(id)"><span>–</span></button>
-                                        <input type="number" maxlength="2" min="1" value="${count}" id={"quantity-item-"+product.id}/>
-                                        <button id=${product.id+"-plus"} onclick="plus(id)"><span>+</span></button>
-                                    </div>
-                                    <div class="fav-del-product" id=${product.id+"-price-icons"}>
-                                        <button id="to_favorite">
-                                            <img src="assets/icons/to_favourites.svg"/>
-                                        </button>
-                                        <button id="to_delete">
-                                            <img src="assets/icons/delet.svg"/>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="details-price-product">
-                                    <h3>
-                                        <span id=${product.id+"-sum"} class="final-price-1">${parseInt(discountPrice).toLocaleString()}&nbsp</span>
-                                        <span class="final-price-2"> сом</span>
-                                    </h3>
-                                    <p id=${product.id+"-sum"}>
-                                        <span>${parseInt(price).toLocaleString()} сом</span>
-                                    </p>
-                                </div>`
+                         <div class="counter-btn">
+                             <button id=${product.id+"-minus"} onclick="minus(id)"><span>–</span></button>
+                             <input type="number" maxlength="2" min="1" value="${count}" id={"quantity-item-"+product.id}/>
+                             <button id=${product.id+"-plus"} onclick="plus(id)"><span>+</span></button>
+                         </div>
+                         <div class="fav-del-product" id=${product.id+"-price-icons"}>
+                             <button id="to_favorite">
+                                 <img src="assets/icons/to_favourites.svg"/>
+                             </button>
+                             <button id="to_delete">
+                                 <img src="assets/icons/delet.svg"/>
+                             </button>
+                         </div>
+                    </div>
+                    <div class="details-price-product">
+                        <h3>
+                            <span id=${product.id+"-sum"} class="final-price-1">${parseInt(discountPrice).toLocaleString()}&nbsp</span>
+                            <span class="final-price-2"> сом</span>
+                        </h3>
+                        <p id=${product.id+"-sum"}>
+                            <span>${parseInt(price).toLocaleString()} сом</span>
+                        </p>
+                    </div>`
     // div.innerHTML = '<div class="product__panel-price__manage">' +
     //     '   <div class="count">' +
     //     '       <span id="'+product.id+'-minus" onmousedown="minus(id);" onmouseup="clearTimers()" onmouseout="clearTimers()" >−</span> <span>'+count+'</span> <span id="'+product.id+'-plus" onmousedown="plus(id) " onmouseup="clearTimers()" onmouseout="clearTimers()">+</span>' +

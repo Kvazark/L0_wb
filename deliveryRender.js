@@ -92,6 +92,13 @@ function renderDeliveryPoint(destination, type){
     parent.prepend(deliveryPointBlock);
     renderDeliveryProducts();
 }
+function renderDeliveryNote(){
+    let parent = document.getElementById('delivery-information');
+
+    // note.innerHTML = '<img src="img/price%20shipping.svg" alt="галочка"><div style="display: inline-block; margin-left: 2px"> Обратная доставка товаров на склад при отказе — <span id="free" onmouseover="popupInfo(id)" onmouseout="popupInfo(id)">бесплатно</span></div>' +
+    //     '<div class="info__content" id="free-content" style="width: 290px; left: 260px"><p>Если товары вам не подойдут, мы вернем их обратно на склад — это бесплатно</p></div>'
+}
+
 
 function getDate(firstDate, secondDate){
     let content;
@@ -100,7 +107,7 @@ function getDate(firstDate, secondDate){
     let secondMonth = namesMonth[secondDate.getMonth()];
     let secondDay = secondDate.getUTCDate();
     if (firstMonth === secondMonth){
-        content = firstDay + ' - ' + secondDay + ' ' + firstMonth
+        content = firstDay + '—' + secondDay + ' ' + firstMonth
     } else {
         content = firstDay + ' ' + firstMonth + ' -<br>' + secondDay + ' ' + secondMonth
     }
@@ -114,25 +121,29 @@ Date.prototype.addDays = function(days) {
 
 function renderDeliveryProducts(){
    // clearDelivery()
-    //let dist = returnDistArr()
     let array = []
     deliveryProducts.forEach(elem =>{
         array.push(elem.distance)
     })
     let arr = new Set(array);
-    console.log(arr)
     arr.forEach(el =>{
         let block = document.createElement('div')
         block.className= "delivery-point";
         let date = now.addDays(el+1)
         let dateDev = date.addDays(1)
-        block.innerHTML = ` <h5>getDate(date, dateDev)</h5>
+        block.innerHTML = ` <h5>${getDate(date, dateDev)}</h5>
                             <section class="delivery-date-images">
                             ${getProducts(el)}
                             </section>`
         firstDaySum = getDate(date, dateDev);
         document.getElementById('delivery-information').append(block);
     })
+    let note = document.createElement("div");
+    note.className = "delivery-note";
+    note.innerHTML = `<img src="assets/icons/price_shipping.svg"/>
+                            <p class="description-note-delivery">Обратная доставка товаров на склад при отказе — <span>бесплатно</span></p>
+                       <div class="popup-info-note-delivery"><p>Если товары вам не подойдут, мы вернем их обратно на склад — это бесплатно</p></div>`
+    document.getElementById('delivery-information').append(note);
 
 }
 
@@ -151,7 +162,6 @@ function getProducts(n){
             content += '<div class="product-delivery"><img src="' + img + '" alt="' + alt + '"><div>'+ el.quant +'</div></div>';
         }
     })
-    console.log(content)
     return content
 }
 // function renderDelivery(destination){
