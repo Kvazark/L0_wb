@@ -45,18 +45,23 @@ input::-webkit-inner-spin-button {
 input[type=number] {
     -moz-appearance: textfield;
 }
-@media (min-width: 1024px) {
+@media (min-width: 970px) {
     .content{
-        padding: 0 1.5rem  3.5% 1.5rem;
+        flex-direction: row;
+        padding: 0 1rem  3.5% 1.5rem;
+    }
+}
+@media (max-width: 970px) {
+    .content{
+        flex-direction: column;
     }
 }
 .content{
     border-radius: 22px;
     background: var(--smoky);
     display: flex;
-    flex-direction: row;
     align-items: flex-start;
-    gap: 2rem;
+    gap: 1.9rem;
     align-self: stretch;
     /*width: 100vw;*/
 }

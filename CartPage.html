@@ -182,10 +182,10 @@
                     <div class="header-decoration-block">
                         <h3>Получатель</h3>
                     </div>
-                    <div class="recipient-inputs">
+                    <div class="recipient-inputs" id="recipient-inputs">
                         <section>
                             <div class="block-input" id="name">
-                                <input type="text" class="input-field" name="name" placeholder="Имя" id='name-input' required />
+                                <input type="text" class="input-field" name="name" placeholder=" имя" id='name-input' required />
                                 <label for="name-input" class="input-label">Имя</label>
                                 <span></span>
                             </div>
@@ -197,7 +197,7 @@
                         </section>
                         <section>
                             <div class="block-input" id="email">
-                                <input type="email"  name="email" id='email-input' placeholder="Почта" required />
+                                <input type="text" class="input-field" name="email" id='email-input' placeholder="Почта" required />
                                 <label for="email-input" class="input-label">Почта</label>
                                 <span></span>
                             </div>
@@ -209,7 +209,8 @@
                             <div class="block-input" id="INN">
                                 <input class="input-without-required" type="number"  name="INN" id='INN-input' required placeholder="ИНН" />
                                 <label for="INN-input" class="input-label">ИНН</label>
-                                <p>Для таможенного оформления</p>
+                                <span></span>
+<!--                                <p>Для таможенного оформления</p>-->
                             </div>
                         </section>
                     </div>
@@ -275,7 +276,7 @@
             </section>
         </section>
         <div class="block-to-pay">
-            <button><span id="name-order-button">Заказать</span></button>
+            <button id="set-order-btn" onclick="checkForm()"><span id="name-order-button">Заказать</span></button>
             <div class="checkbox-agreement">
                 <img src="assets/icons/arrow_checkbox.svg">
                 <p>Соглашаюсь <a >с правилами пользования торговой площадкой</a> и возврата</p>
@@ -296,51 +297,3 @@
 
 
 </html>
-<!--                    <div class="card-cart-item">-->
-<!--                        <div class="description-product">-->
-<!--                            <div class="item-image">-->
-<!--                                <div class="checkbox-block">-->
-<!--                                    <input type="checkbox"  checked id="cart_item1" name="cart_item">-->
-<!--                                    <label for="cart_item1"></label>-->
-<!--                                </div>-->
-<!--                                <div class="container-item-image">-->
-<!--                                    <img src="assets/images/t-shirt_man.png" alt=""/>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            <div class="specifications-item">-->
-<!--                                <h5>Футболка UZcotton мужская</h5>-->
-<!--                                <p class="item-color-and-size"><span>Цвет: булый</span><span>Размер: 56</span></p>-->
-<!--                                <div>-->
-<!--                                    <p>Коледино WB</p>-->
-<!--                                    <p>ООО Вайлдберриз<span><img src="assets/icons/icon-info.svg"></span></p>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="details-product">-->
-
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="card-cart-item">-->
-<!--                        <div class="description-product">-->
-<!--                            <div class="item-image">-->
-<!--                                <div class="checkbox-block">-->
-<!--                                    <input type="checkbox"  checked id="cart_item2" name="cart_item">-->
-<!--                                    <label for="cart_item2"></label>-->
-<!--                                </div>-->
-<!--                                <div class="container-item-image">-->
-<!--                                    <img src="assets/images/silicone_case.png" alt=""/>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            <div class="specifications-item">-->
-<!--                                <h5>Силиконовый чехол картхолдер (отверстия) для карт, прозрачный кейс бампер на Apple iPhone XR, MobiSafe</h5>-->
-<!--                                <p class="item-color-and-size"><span>Цвет: прозрачный</span></p>-->
-<!--                                <div>-->
-<!--                                    <p>Коледино WB</p>-->
-<!--                                    <p>ООО Мегапрофстиль<span><img src="assets/icons/icon-info.svg"></span></p>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="details-product">-->
-
-<!--                        </div>-->
-<!--                    </div>-->

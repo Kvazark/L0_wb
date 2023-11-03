@@ -37,8 +37,6 @@ function renderAvailableProduct(product) {
                                     </section>
                                 </div>  
                             </div>
-                        </div>
-                        <div class="details-product">
                         </div>`;
     availableProducts.append(newElement)
   //  addDescription(product);
