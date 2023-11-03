@@ -3,7 +3,7 @@ personalData = {
     discount: 10,
     addresses: ["Бишкек, улица Табышалиева, 57", "Бишкек, улица Жукеева-Пудовкина, 77/1", "Бишкек, микрорайон Джал, улица Ахунбаева Исы, 67/1"],
     deliveryCost: "free",
-    pickupPoint: [{
+    pickupPoints: [{
         address: "Бишкек, улица Ахматбека Суюмбаева, 12/1",
         rating: "4.95",
         workingHours: "Ежедневно с 10 до 21"

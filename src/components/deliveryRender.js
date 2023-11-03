@@ -1,26 +1,13 @@
 let deliveryProducts = [];
 let deliveryCost, destinationSum, firstDaySum;
 let firstElement = true;
-let defaultAddress = personalData.pickupPoint[0];
-let type;
+let defaultAddress = personalData.pickupPoints[0];
+let typeDelivery;
 let now = new Date();
 let namesMonth = [
     "января", "февраля", "мара", "апреля", "мая", "июня",
     "июля", "августа", "сентября", "октября", "ноября", "декабря"
 ]
-// function getDeliveryProducts(){
-//     deliveryProducts = []
-//     sumProducts.forEach(elem =>{
-//         if (elem.checked){
-//             deliveryProducts.push({
-//                 id: elem.id,
-//                 distance: returnDistance(elem.id),
-//                 quant: elem.quant
-//             })
-//         }
-//     })
-//     renderDeliveryProducts()
-// }
 function getDeliveryProducts(){
     deliveryProducts = []
     console.log(sumProducts)
@@ -34,8 +21,7 @@ function getDeliveryProducts(){
             })
         }
     })
-
-    renderDeliveryPoint(personalData.pickupPoint[0],'pickup-point');
+    renderDeliveryPoint(personalData.pickupPoints[0],'pickup-point');
 }
 function returnDistance(id){
     let n;
@@ -79,7 +65,7 @@ function renderDeliveryPoint(destination, type){
                             <section class="pickup-point">
                                 <p>${destination.address}</p>
                                 <div class="pickup-point-info">
-                                    <span><img src="assets/icons/star_fill.svg"/>${destination.rating}</span>
+                                    <span><img src="src/assets/icons/star_fill.svg"/>${destination.rating}</span>
                                     <span>${destination.workingHours}</span>
                                 </div>
                             </section>`
@@ -140,7 +126,7 @@ function renderDeliveryProducts(){
     })
     let note = document.createElement("div");
     note.className = "delivery-note";
-    note.innerHTML = `<img src="assets/icons/price_shipping.svg"/>
+    note.innerHTML = `<img src="src/assets/icons/price_shipping.svg"/>
                             <p class="description-note-delivery">Обратная доставка товаров на склад при отказе — <span>бесплатно</span></p>
                        <div class="popup-info-note-delivery"><p>Если товары вам не подойдут, мы вернем их обратно на склад — это бесплатно</p></div>`
     document.getElementById('delivery-information').append(note);
@@ -163,6 +149,12 @@ function getProducts(n){
         }
     })
     return content
+}
+function renderDelivery(destination){
+    let parent = document.getElementById('delivery-information');
+
+    //renderDeliveryPoint(destination, type);
+
 }
 // function renderDelivery(destination){
 //     let deliveryInfo = document.getElementById('delivery-method-container')
@@ -267,3 +259,30 @@ function  getAddressList(block){
         i++
     })
 }
+
+function takeAddressFromModal(){
+    var radioButtons = document.getElementsByName("radio-address");
+    var selectedValue = "";
+
+    for (var i = 0; i < radioButtons.length; i++) {
+        if (radioButtons[i].checked) {
+            selectedValue = radioButtons[i].value;
+            break;
+        }
+    }
+
+    for ( let i = 0; i < arr.childElementCount; i++){
+        let arrCheck = arr.children[i].firstElementChild.firstElementChild;
+        if (arrCheck.checked){
+            if (type === 'courier'){
+                renderDelivery(personalData.addresses[i])
+            }
+            if (type === 'PVZ'){
+                renderDelivery(personalData.pickupPoints[i])
+            }
+        }
+    }
+    // closeBlock('popUpDelivery')
+    // renderDeliverySum()
+}
+renderDelivery(defaultAddress);

@@ -1,7 +1,7 @@
 products = [
     {
         id: 12555551,
-        image: "assets/images/t-shirt_man.png",
+        image: "src/assets/images/t-shirt_man.png",
         name: "Футболка UZcotton мужская",
         color: "белый",
         size: "56",
@@ -16,7 +16,7 @@ products = [
     },
     {
         id: 12555552,
-        image: "assets/images/silicone_case.png",
+        image: "src/assets/images/silicone_case.png",
         name: "Силиконовый чехол картхолдер (отверстия) для карт, прозрачный кейс бампер на Apple iPhone XR, MobiSafe",
         color: "прозрачный",
         size: "",
@@ -32,7 +32,7 @@ products = [
 
     {
         id: 12555553,
-        image: "assets/images/colored_pencils.png",
+        image: "src/assets/images/colored_pencils.png",
         name: "Карандаши цветные Faber-Castell \"Замок\", набор 24 цвета, заточенные, шестигранные, Faber-Castell",
         color: "",
         size: "",
@@ -47,7 +47,7 @@ products = [
     },
     {
         id: 12555554,
-        image: "assets/images/t-shirt_man.png",
+        image: "src/assets/images/t-shirt_man.png",
         name: "Футболка UZcotton мужская",
         color: "белый",
         size: "56",
@@ -63,7 +63,7 @@ products = [
     // скидку покупателям 10% добавить?
     {
         id: 12555555,
-        image: "assets/images/silicone_case.png",
+        image: "src/assets/images/silicone_case.png",
         name: "Силиконовый чехол картхолдер (отверстия) для карт, прозрачный кейс бампер на Apple iPhone XR, MobiSafe",
         color: "прозрачный",
         size: "",
@@ -78,7 +78,7 @@ products = [
     },
     {
         id: 12555556,
-        image: "assets/images/colored_pencils.png",
+        image: "src/assets/images/colored_pencils.png",
         name: "Карандаши цветные Faber-Castell \"Замок\", набор 24 цвета, заточенные, шестигранные, Faber-Castell",
         color: "",
         size: "",

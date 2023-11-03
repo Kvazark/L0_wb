@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="src/styles/header.css">
+    <link rel="stylesheet" href="src/styles/cartProducts.css">
+    <link rel="stylesheet" href="src/styles/decoration.css">
+    <link rel="stylesheet" href="src/styles/totalPrice.css">
+    <link rel="stylesheet" href="src/styles/modalWindow.css">
+</head>
+<body>
+<header class="header-container">
+    <div class="header">
+        <div class="burger-icon-and-title">
+            <button class="catalog-block">
+                <img src="src/assets/icons/catalog.svg">
+            </button>
+            <h4 class="title-wb">Товары<br>и точка</h4>
+        </div>
+        <div class="search-block">
+            <input type="text" placeholder="Я ищу...">
+            <button><img src="src/assets/icons/search.svg"/></button>
+        </div>
+        <div class="icons-and-menus">
+            <button class="profile-btn">
+                <img src="src/assets/icons/user.svg">
+                <p>Профиль</p>
+            </button>
+            <button class="cart-btn">
+                <img src="src/assets/icons/cart.svg" alt="cart"/>
+                <div id="cart-counter" class="cart_counter_circle"></div>
+                <p>Корзина</p>
+            </button>
+        </div>
+    </div>
+</header>
+<main class="content">
+    <section class="cart-container">
+        <h3 class="title-cart-container">Корзина</h3>
+        <div class="cart">
+            <div class="available-products">
+                <div class="header-available">
+                    <div class="checkbox-block">
+                        <input type="checkbox" checked id="cart_all" name="cart_all" onclick="addAllCheck()">
+                        <label for="cart_all"></label>
+                        <p>Выбрать все</p>
+                    </div>
+                    <div>
+                        <img onclick="dropAvail()" class="dropbtn" src="src/assets/icons/arrow.svg" id="dropbtn-avail">
+                    </div>
+                </div>
+                <hr/>
+                <div class="dropdown">
+                    <div class="cards-product" id="available-products-list">
+<!--                        ///////////////////////////////////////////////////////////////////-->
+                    </div>
+                </div>
+            </div>
+            <div class="missing-products">
+                <div class="header-missing">
+                    <span id="missing-head"></span>
+                    <div>
+                        <img onclick="dropNotAvail()" class="dropbtn" src="src/assets/icons/arrow.svg" id="dropbtn-miss">
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <div class="cards-product" id="missing-products-list">
+                        <hr>
+<!--                        ////////////////////////////////////////////////////////////////-->
+                    </div>
+                </div>
+            </div>
+            <div class="decoration-container">
+                <div class="delivery-method-container">
+                    <div class="header-decoration-block">
+                        <h3>Способ доставки</h3>
+                        <button class="change-btn" id="edit-delivery-method-btn" onclick="openModal()">Изменить</button>
+                    </div>
+                    <div class="delivery-information" id="delivery-information">
+<!--                        ///////////////////////////////////-->
+                    </div>
+                </div>
+                <div class="payment-method-container">
+                    <div class="header-decoration-block">
+                        <h3>Способ оплаты</h3>
+                        <button class="change-btn">Изменить</button>
+                    </div>
+                    <div class="bank-card">
+                        <img src="src/assets/icons/card_mir.svg">
+                        <p><span>1234 56•• •••• 1234</span><span>01/30</span></p>
+                    </div>
+                    <p class="payment-note">Спишем оплату с карты при получении</p>
+                </div>
+                <div class="recipient-container">
+                    <div class="header-decoration-block">
+                        <h3>Получатель</h3>
+                    </div>
+                    <div class="recipient-inputs" id="recipient-inputs">
+                        <section>
+                            <div class="block-input" id="name">
+                                <input type="text" class="input-field" name="name" placeholder=" имя" id='name-input' required />
+                                <label for="name-input" class="input-label">Имя</label>
+                                <span></span>
+                            </div>
+                            <div class="block-input" id="surname">
+                                <input type="text" class="input-field" placeholder="Фамилия" name="surname" id='surname-input' required />
+                                <label for="surname-input" class="input-label">Фамилия</label>
+                                <span></span>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="block-input" id="email">
+                                <input type="text" class="input-field" name="email" id='email-input' placeholder="Почта" required />
+                                <label for="email-input" class="input-label">Почта</label>
+                                <span></span>
+                            </div>
+                            <div class="block-input" id="phone">
+                                <input type="text"  name="phone" id='phone-input' placeholder="Телефон" required data-phone-pattern = '+7 ___ ___-__-__' />
+                                <label for="phone-input" class="input-label">Телефон</label>
+                                <span></span>
+                            </div>
+                            <div class="block-input" id="INN">
+                                <input class="input-without-required" type="number"  name="INN" id='INN-input' required placeholder="ИНН" />
+                                <label for="INN-input" class="input-label">ИНН</label>
+                                <span></span>
+                                <p>Для таможенного оформления</p>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="making-order-container">
+        <section class="cost-of-the-order">
+            <section class="price-order-container">
+                <div class="header-price-order">
+                    <h2>Итого</h2>
+                    <h2>1016 <span>сом</span></h2>
+                </div>
+                <section>
+                    <div>
+                        <p>4 товара</p>
+                        <p>2001 сом</p>
+                    </div>
+                    <div>
+                        <p>Скидка</p>
+                        <p>−985 сом</p>
+                    </div>
+                    <div>
+                        <p>Доставка</p>
+                        <p>Бесплатно</p>
+                    </div>
+                </section>
+            </section>
+            <section class="delivery-order">
+                <div class="point-courier-order">
+                    <section>
+                        <p>Доставка в пункт выдачи</p>
+                        <img src="src/assets/icons/edit_pencil.svg">
+                    </section>
+                    <p>Бишкек, улица Ахматбека Суюмбаева, 12/1</p>
+                    <span>5–8 фев</span>
+                </div>
+                <div class="delivery-order-note">
+                    <img src="src/assets/icons/price_shipping.svg"/>
+                    <p class="description-note-delivery">Обратная доставка товаров на склад при отказе — <span>бесплатно</span></p>
+                </div>
+            </section>
+            <section class="paymet-order">
+                <div class="paymet-order-details">
+                    <section>
+                        <p>Оплата картой</p>
+                        <img src="src/assets/icons/edit_pencil.svg"/>
+                    </section>
+                    <div>
+                        <img src="src/assets/icons/card_mir.svg">
+                        <p>1234 12•• •••• 1234</p>
+                    </div>
+                </div>
+                <div class="checkbox-order">
+                    <div class="checkbox-block">
+                        <input type="checkbox" id="write-off-immediately" name="cart_all" onclick="togglePaymentMessage()">
+                        <label for="write-off-immediately"></label>
+                        <p style="font-size: 13px;">Списать оплату сразу</p>
+                    </div>
+                    <span id="payment-message">Спишем оплату с карты при получении</span>
+                </div>
+            </section>
+        </section>
+        <div class="block-to-pay">
+            <button id="set-order-btn" onclick="checkForm()"><span id="name-order-button">Заказать</span></button>
+            <div class="checkbox-agreement">
+                <img src="src/assets/icons/arrow_checkbox.svg">
+                <p>Соглашаюсь <a >с правилами пользования торговой площадкой</a> и возврата</p>
+            </div>
+        </div>
+    </section>
+</main>
+<section class="footer">
+    <p>© 2022  ООО «Товары и точка»</p>
+</section>
+<section class="modal hidden">
+<!--    <div class="header-modal">-->
+<!--        <h3>Способ оплаты</h3>-->
+<!--        <button class="btn-close"><img src="src/assets/icons/x_close.svg"/></button>-->
+<!--    </div>-->
+<!--    <div class="content-modal">-->
+<!--        <div class="choosing-bank-cards-container">-->
+<!--            <div class="radio-group">-->
+<!--                <div class="custom-radio">-->
+<!--                    <input name="bank_card" type="radio" id="1"/>-->
+<!--                    <label for="1"></label>-->
+<!--                    <p><img src="src/assets/icons/card_mir.svg"><span>1234 56•• •••• 1234</span></p>-->
+<!--                </div>-->
+<!--                <div class="custom-radio">-->
+<!--                    <input name="bank_card" id="2" type="radio"/>-->
+<!--                    <label for="2"></label>-->
+<!--                    <p><img src="src/assets/icons/card_visa.svg"><span>1234 56•• •••• 1234</span></p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="modal-btn">-->
+<!--            <button>Выбрать</button>-->
+<!--        </div>-->
+<!--    </div>-->
+    <div class="content-modal">
+        <div class="header-modal">
+            <h3>Способ доставки</h3>
+            <button class="btn-close"><img src="src/assets/icons/x_close.svg"/></button>
+        </div>
+        <section class="choosing-delivery-method-container">
+            <div class="choosing-delivery-method">
+                <button id="to-pick-up-point-btn">В пункт выдачи</button>
+                <button id="by-courier-btn">Курьером</button>
+            </div>
+            <div class="choosing-address-container">
+                <div class="radio-group" id="address-modal">
+                    <h4>Мои адреса</h4>
+                    <div class="custom-radio">
+                        <input name="radio-address" type="radio" id="1" value="1"/>
+                        <label for="1" class="radio-address"></label>
+                        <p><span>Бишкек, улица Табышалиева, 57</span><img src="src/assets/icons/delet.svg"></p>
+                    </div>
+                    <div class="custom-radio">
+                        <input name="radio-address" id="2" type="radio" value="2"/>
+                        <label for="2" class="radio-address"></label>
+                        <p><span>Бишкек, улица Жукеева-Пудовкина, 77/1</span><img src="src/assets/icons/delet.svg"></p>
+                    </div>
+                    <div class="custom-radio">
+                        <input name="radio-address" id="3" type="radio" value="3"/>
+                        <label for="3" class="radio-address"></label>
+                        <p><span>Бишкек, микрорайон Джал, улица Ахунбаева Исы, 67/1</span><img src="src/assets/icons/delet.svg"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="modal-btn">
+            <button>Выбрать</button>
+        </div>
+    </div>
+</section>
+<div class="overlay hidden"></div>
+</body>
+<script src="src/service/products.js"></script>
+<script src="src/service/personalData.js"></script>
+<script src="src/components/deliveryRender.js"></script>
+<script src="src/components/validationInputs.js"></script>
+<script src="src/components/cartRender.js"></script>
+<script src="src/components/renderOrder.js"></script>
+<script src="modalWindow.js"></script>
+</html>

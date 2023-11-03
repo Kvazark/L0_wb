@@ -29,7 +29,7 @@ function renderAvailableProduct(product) {
                                   <p class="item-color-and-size" id=${product.id + "-color-and-size"} style="display: none"></p>
                                 <div>
                                     <p>${product.location}</p>
-                                    <p class="get-info-popup">${product.provider}<span><img src="assets/icons/icon-info.svg"/></span></p>
+                                    <p class="get-info-popup">${product.provider}<span><img src="src/assets/icons/icon-info.svg"/></span></p>
                                     <section class="popup-info">
                                         <h4>${updateProvider}</h4>
                                         <span>ОГРН: ${product.OGRN}</span>
@@ -69,10 +69,10 @@ function renderPrice(product){
                          </div>
                          <div class="fav-del-product" id=${product.id+"-price-icons"}>
                              <button id="to_favorite">
-                                 <img src="assets/icons/to_favourites.svg"/>
+                                 <img src="src/assets/icons/to_favourites.svg"/>
                              </button>
                              <button id="to_delete">
-                                 <img src="assets/icons/delet.svg"/>
+                                 <img src="src/assets/icons/delet.svg"/>
                              </button>
                          </div>
                     </div>
@@ -151,10 +151,10 @@ function renderNotAvailable(product){
                             </div>
                             <div class="fav-del-not-avail-product" id=${product.id+"-price-icons"}>
                                         <button id="to_favorite">
-                                            <img src="assets/icons/to_favourites.svg"/>
+                                            <img src="src/assets/icons/to_favourites.svg"/>
                                         </button>
                                         <button id="to-delete">
-                                            <img src="assets/icons/delet.svg"/>
+                                            <img src="src/assets/icons/delet.svg"/>
                                         </button>
                             </div>
                         </div>`
