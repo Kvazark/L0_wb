@@ -81,8 +81,9 @@
                     </div>
                     <div class="delivery-information" id="delivery-information">
                         <div class="delivery-information-child" id="delivery-information-1"></div>
+                        <!--                        ///////////////////////////////////-->
                         <div class="delivery-information-child" id="delivery-information-2"></div>
-<!--                        ///////////////////////////////////-->
+                        <!--                        ///////////////////////////////////-->
                     </div>
                 </div>
                 <div class="payment-method-container">
@@ -91,8 +92,7 @@
                         <button class="change-btn" onclick="openModal('payMet')">Изменить</button>
                     </div>
                     <div id="select-bank-card">
-<!--                        <img src="src/assets/icons/card_mir.svg">-->
-<!--                        <p><span>1234 56•• •••• 1234</span><span>01/30</span></p>-->
+                        <!--                        ///////////////////////////////////-->
                     </div>
                     <p class="payment-note">Спишем оплату с карты при получении</p>
                 </div>
@@ -137,61 +137,61 @@
         </div>
     </section>
     <section class="making-order-container">
-        <section class="cost-of-the-order">
-            <section class="price-order-container">
-                <div class="header-price-order">
-                    <h2>Итого</h2>
-                    <h2>1016 <span>сом</span></h2>
-                </div>
-                <section>
-                    <div>
-                        <p>4 товара</p>
-                        <p>2001 сом</p>
-                    </div>
-                    <div>
-                        <p>Скидка</p>
-                        <p>−985 сом</p>
-                    </div>
-                    <div>
-                        <p>Доставка</p>
-                        <p>Бесплатно</p>
-                    </div>
-                </section>
-            </section>
-            <section class="delivery-order">
-                <div class="point-courier-order">
-                    <section>
-                        <p>Доставка в пункт выдачи</p>
-                        <img src="src/assets/icons/edit_pencil.svg">
-                    </section>
-                    <p>Бишкек, улица Ахматбека Суюмбаева, 12/1</p>
-                    <span>5–8 фев</span>
-                </div>
-                <div class="delivery-order-note">
-                    <img src="src/assets/icons/price_shipping.svg"/>
-                    <p class="description-note-delivery">Обратная доставка товаров на склад при отказе — <span>бесплатно</span></p>
-                </div>
-            </section>
-            <section class="paymet-order">
-                <div class="paymet-order-details" id="paymet-order-details">
-                    <section>
-                        <p>Оплата картой</p>
-                        <img src="src/assets/icons/edit_pencil.svg"/>
-                    </section>
-                    <div id="select-card-order">
-<!--                        <img src="src/assets/icons/card_mir.svg">-->
-<!--                        <p id="number-select-card">1234 12•• •••• 1234</p>-->
-                    </div>
-                </div>
-                <div class="checkbox-order">
-                    <div class="checkbox-block">
-                        <input type="checkbox" id="write-off-immediately" name="cart_all" onclick="togglePaymentMessage()">
-                        <label for="write-off-immediately"></label>
-                        <p style="font-size: 13px;">Списать оплату сразу</p>
-                    </div>
-                    <span id="payment-message">Спишем оплату с карты при получении</span>
-                </div>
-            </section>
+        <section class="cost-of-the-order" id="cost-of-the-order">
+<!--            <section class="price-order-container">-->
+<!--                <div class="header-price-order">-->
+<!--                    <h2>Итого</h2>-->
+<!--                    <h2>1016 <span>сом</span></h2>-->
+<!--                </div>-->
+<!--                <section>-->
+<!--                    <div>-->
+<!--                        <p>4 товара</p>-->
+<!--                        <p>2001 сом</p>-->
+<!--                    </div>-->
+<!--                    <div>-->
+<!--                        <p>Скидка</p>-->
+<!--                        <p>−985 сом</p>-->
+<!--                    </div>-->
+<!--                    <div>-->
+<!--                        <p>Доставка</p>-->
+<!--                        <p>Бесплатно</p>-->
+<!--                    </div>-->
+<!--                </section>-->
+<!--            </section>-->
+<!--            <section class="delivery-order">-->
+<!--                <div class="point-courier-order">-->
+<!--                    <section>-->
+<!--                        <p>Доставка в пункт выдачи</p>-->
+<!--                        <img src="src/assets/icons/edit_pencil.svg">-->
+<!--                    </section>-->
+<!--                    <p>Бишкек, улица Ахматбека Суюмбаева, 12/1</p>-->
+<!--                    <span>5–8 фев</span>-->
+<!--                </div>-->
+<!--                <div class="delivery-order-note">-->
+<!--                    <img src="src/assets/icons/price_shipping.svg"/>-->
+<!--                    <p class="description-note-delivery">Обратная доставка товаров на склад при отказе — <span>бесплатно</span></p>-->
+<!--                </div>-->
+<!--            </section>-->
+<!--            <section class="paymet-order">-->
+<!--                <div class="paymet-order-details" id="paymet-order-details">-->
+<!--                    <section>-->
+<!--                        <p>Оплата картой</p>-->
+<!--                        <img src="src/assets/icons/edit_pencil.svg"/>-->
+<!--                    </section>-->
+<!--                    <div id="select-card-order">-->
+<!--&lt;!&ndash;                        <img src="src/assets/icons/card_mir.svg">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <p id="number-select-card">1234 12•• •••• 1234</p>&ndash;&gt;-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="checkbox-order">-->
+<!--                    <div class="checkbox-block">-->
+<!--                        <input type="checkbox" id="write-off-immediately" name="cart_all" onclick="togglePaymentMessage()">-->
+<!--                        <label for="write-off-immediately"></label>-->
+<!--                        <p style="font-size: 13px;">Списать оплату сразу</p>-->
+<!--                    </div>-->
+<!--                    <span id="payment-message">Спишем оплату с карты при получении</span>-->
+<!--                </div>-->
+<!--            </section>-->
         </section>
         <div class="block-to-pay">
             <button id="set-order-btn" onclick="checkForm()"><span id="name-order-button">Заказать</span></button>
@@ -269,6 +269,6 @@
 <script src="src/components/deliveryRender.js"></script>
 <script src="src/components/validationInputs.js"></script>
 <script src="src/components/cartRender.js"></script>
-<script src="modalWindow.js"></script>
 <script src="src/components/renderOrder.js"></script>
+<script src="modalWindow.js"></script>
 </html>

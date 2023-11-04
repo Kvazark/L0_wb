@@ -338,10 +338,17 @@ function renderSelectCard() {
     console.log(selectedValueCard)
     let parent1 = document.getElementById('select-card-order');
     let parent2 = document.getElementById('select-bank-card');
-    while (parent1.firstChild || parent2.firstChild) {
-        parent1.firstChild.remove();
-        parent2.firstChild.remove();
+    if(parent1){
+        while (parent1.firstChild) {
+            parent1.firstChild.remove();
+        }
     }
+    if(parent2){
+        while (parent2.firstChild) {
+            parent2.firstChild.remove();
+        }
+    }
+
     let block1 = document.createElement('div');
     block1.innerHTML = `<img src=${selectedValueCard.type}>
                         <p>${selectedValueCard.number}</p>`
@@ -350,8 +357,8 @@ function renderSelectCard() {
 
     block2.innerHTML = `<img src=${selectedValueCard.type}>
                         <p><span>${selectedValueCard.number}</span><span>${selectedValueCard.expirationDate}</span></p>`
-    parent1.append(block1);
-    parent2.append(block2);
+    if(parent1) parent1.append(block1);
+    if(parent2) parent2.append(block2);
 }
 
 renderDeliveryProducts();

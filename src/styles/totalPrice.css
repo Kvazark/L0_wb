@@ -85,6 +85,7 @@
     align-items: flex-start;
     gap: 0.75rem;
     align-self: stretch;
+    position: relative;
 }
 .point-courier-order{
     display: flex;
@@ -100,7 +101,7 @@
     align-self: stretch;
     gap: 16px;
 }
-.point-courier-order section p, .paymet-order-details section p{
+.point-courier-order section h5, .paymet-order-details section h5{
     color: #000;
     font-size: 16px;
     font-style: normal;
@@ -122,7 +123,7 @@
     line-height: 16px;
     border-bottom: 1px dashed  rgba(203, 17, 171, 0.20);;
 }
-.delivery-order-note{
+.delivery-order-note {
     display: flex;
     padding: 0.66rem 0.5rem 0.65rem 0.5rem;
     align-items: center;
@@ -130,6 +131,36 @@
     align-self: stretch;
     border-radius: 8px;
     background: var(--smoky);
+}
+.popup-info-note-delivery-order{
+    z-index: 1;
+    cursor: pointer;
+    position: relative;
+}
+.description-note-delivery-order:hover + .popup-info-note-delivery-order {
+    opacity: 1;
+    visibility: visible;
+}
+.popup-info-note-delivery-order {
+    width: 110%;
+    left: -5%;
+    padding: 0.625rem 1rem 0.875rem 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    background: #FFF;
+    display: flex;
+    border-radius: 8px;
+    box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.30), 0px 2px 10px 0px rgba(0, 0, 0, 0.15);
+    position: absolute;
+    margin-top: 6rem;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.15s ease-in;
+    z-index: 111;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
 }
 /*////////////////////////*/
 .paymet-order{
@@ -162,8 +193,13 @@
     font-weight: 400;
     line-height: 20px;
 }
-.paymet-order-details div img{
-    width: 1.875rem;
+.paymet-order-details section p{
+    color:  #000;
+    text-align: right;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
 }
 .checkbox-order{
     display: flex;

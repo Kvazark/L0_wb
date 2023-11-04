@@ -287,11 +287,11 @@ function minus(idMinus){
             let div = document.getElementById(productMinus.id + '-price');
             divPrice.removeChild(div);
             renderPrice(productMinus);
-           // calculate()
+            calculation();
         }
     })
-    getDeliveryProducts()
-    //calculate();
+    getDeliveryProducts();
+    calculation();
 }
 function plus(idPlus){
     let id = Number(idPlus.replace(/[^\d]/g, ''));
@@ -310,11 +310,11 @@ function plus(idPlus){
             let div = document.getElementById(productPlus.id+'-price');
             divPrice.removeChild(div);
             renderPrice(productPlus);
-           // calculate()
+            calculation();
         }
     });
-    getDeliveryProducts()
-    //calculate();
+    getDeliveryProducts();
+    calculation();
 }
 
 function deleteFromBucket(el){
@@ -327,8 +327,8 @@ function deleteFromBucket(el){
     document.getElementById('available-products-list').innerHTML = '';
     document.getElementById('missing-products-list').innerHTML = '';
     checkupProducts();
-    getDeliveryProducts()
-    //calculate();
+    getDeliveryProducts();
+    calculation();
 }
 
 function deleteFromArr(arr, id){
@@ -347,14 +347,15 @@ function checkupProducts (){
         if (product.amount > 0){
             renderAvailableProduct(product);
             cartCount++;
+            calculation();
         } else {
             renderNotAvailable(product);
             missingCount++;
         }
     });
     cartCountCircle(cartCount);
-    renderHead(missingCount)
-    verificationCheck()
+    renderHead(missingCount);
+    verificationCheck();
 }
 
 function quantCheck(amount, id){
@@ -391,8 +392,8 @@ function addCheck(el){
         if (elem.id === id)
             elem.checked = !elem.checked;
     })
-    verificationCheck()
-    //calculate()
+    verificationCheck();
+    calculation();
 }
 
 function checkCheckbox(id){
@@ -401,6 +402,7 @@ function checkCheckbox(id){
             document.getElementById(id+'-checkbox').checked = true
         }
     })
+
 }
 
 function addAllCheck(){
@@ -412,8 +414,8 @@ function addAllCheck(){
         let checkbox = document.getElementById(elem.id+'-checkbox')
         checkbox.checked = !!check.checked;
     })
-    getDeliveryProducts()
-    //calculate()
+    getDeliveryProducts();
+    calculation();
 }
 
 function verificationCheck(){
@@ -431,6 +433,6 @@ function verificationCheck(){
     if (i < sumProducts.length){
         check.checked = false
     }
-    getDeliveryProducts()
+    getDeliveryProducts();
 }
 
