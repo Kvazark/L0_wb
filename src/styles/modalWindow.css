@@ -167,8 +167,29 @@
     justify-content: space-between;
     width: 100%;
 }
-
-.radio-group{
+.choosing-bank-cards-container .radio-group{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    align-self: stretch;
+    width: 100%;
+}
+.choosing-bank-cards-container .custom-radio{
+    display: flex;
+    justify-content: space-between;
+}
+.choosing-bank-cards-container p{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    align-self: stretch;
+}
+.choosing-bank-cards-container img{
+    width: 2rem;
+    height: 1.5rem;
+}
+.choosing-address-container .radio-group{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -182,6 +203,7 @@
     font-style: normal;
     font-weight: 700;
     line-height: 16px;
+    margin-bottom: 0.3rem;
 }
 .radio-group span{
     color:  #000;

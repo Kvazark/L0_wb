@@ -3,7 +3,11 @@ let deliveryCost, destinationSum, firstDaySum;
 let firstElement = true;
 let defaultAddress = personalData.pickupPoints[0];
 let typeDelivery;
+let selectedValue;
+let selectedValueCardID;
+let typesDelivery = ["pickUpPoint", "courier"]
 let now = new Date();
+var selectedValueCard = personalData.cards[1];
 let namesMonth = [
     "января", "февраля", "мара", "апреля", "мая", "июня",
     "июля", "августа", "сентября", "октября", "ноября", "декабря"
@@ -21,7 +25,7 @@ function getDeliveryProducts(){
             })
         }
     })
-    renderDeliveryPoint(personalData.pickupPoints[0],'pickup-point');
+    renderDeliveryPoint(personalData.pickupPoints[0],typeDelivery);
 }
 function returnDistance(id){
     let n;
@@ -45,7 +49,7 @@ function renderDeliveryPoint(destination, type){
     deliveryPointBlock.className = "delivery-point";
     let deliveryCostBlock= document.createElement("div");
     deliveryCostBlock.className = "delivery-point";
-    if(type==='courier'){
+    if(type===typesDelivery[1]){
         destinationSum = destination;
         if (personalData["deliveryCost"] === 'free'){
             deliveryCost = 'Бесплатно'
@@ -60,7 +64,7 @@ function renderDeliveryPoint(destination, type){
                                 <p>${deliveryCost}</p>
                             </section>`
 
-    }else if(type==='pickup-point'){
+    }else if(type===typesDelivery[0]){
         deliveryPointBlock.innerHTML =`<h5 id="type-delivery-point">Пункт выдачи</h5>
                             <section class="pickup-point">
                                 <p>${destination.address}</p>
@@ -106,7 +110,6 @@ Date.prototype.addDays = function(days) {
 }
 
 function renderDeliveryProducts(){
-   // clearDelivery()
     let array = []
     deliveryProducts.forEach(elem =>{
         array.push(elem.distance)
@@ -132,7 +135,6 @@ function renderDeliveryProducts(){
     document.getElementById('delivery-information').append(note);
 
 }
-
 function getProducts(n){
     let content = '';
     deliveryProducts.forEach(el =>{
@@ -150,139 +152,197 @@ function getProducts(n){
     })
     return content
 }
-function renderDelivery(destination){
+function renderDelivery(){
+    renderAddressList();
     let parent = document.getElementById('delivery-information');
-
     //renderDeliveryPoint(destination, type);
 
 }
-// function renderDelivery(destination){
-//     let deliveryInfo = document.getElementById('delivery-method-container')
-//     let deliveryPoint = document.getElementById('type-delivery-point')
-//     if (type === 'courier'){
-//         //delivery-point
-//         deliveryPoint.innerHTML="Адрес доставки"
-//         deliveryInfo.firstElementChild.firstElementChild.lastElementChild.innerHTML = destination;
-//         destinationSum = destination
-//     }
-//     if (type === 'pickup-point'){
-//         deliveryInfo.firstElementChild.firstElementChild.firstElementChild.innerHTML = 'Пункт выдачи'
-//         deliveryInfo.firstElementChild.firstElementChild.lastElementChild.innerHTML = destination.address + '<br>' + ratingIcon + '<span> '+destination.grade+'</span> <span class="work_hours">'+destination.working_hours+'</span>'
-//         destinationSum = destination.address
-//     }
-//     if (personalData["deliveryCost"] === 'free'){
-//         deliveryInfo.children[0].children[1].children[1].innerHTML = 'Бесплатно';
-//         deliveryCost = 'Бесплатно'
-//         renderSubscription();
-//     }
-// }
+function SaveDelivery(){
+    defaultAddress = takeAddressFromModal();
+    renderDeliveryPoint(defaultAddress,typesDelivery);
+    console.log(defaultAddress)
+    closeModal();
+}
 function renderSubscription(){
     let sub = document.getElementById('delivery__subscription');
     sub.innerHTML = '<img src="img/price%20shipping.svg" alt="галочка"><div style="display: inline-block; margin-left: 2px"> Обратная доставка товаров на склад при отказе — <span id="free" onmouseover="popupInfo(id)" onmouseout="popupInfo(id)">бесплатно</span></div>' +
         '<div class="info__content" id="free-content" style="width: 290px; left: 260px"><p>Если товары вам не подойдут, мы вернем их обратно на склад — это бесплатно</p></div>'
 }
 
-function renderPPointsList(){
-    //deleteButton()
-    type = 'pickup-point';
-    let modul = document.getElementById('popUpDelivery')
-    modul.children[1].children[0].style.border = '2px solid #CB11AB';
-    modul.children[1].children[1].style.border = '2px solid rgba(203, 17, 171, 0.15)';
-    let PVZ = document.createElement('form')
-    PVZ.classList = 'popup-window-addresses'
-    PVZ.id = 'PVZ'
-    getPPointsList(PVZ);
-    modul.append(PVZ)
-    for (let i = 0; i < person.PVZ.length; i++){
-        addTrashDel(i, type);
-    }
-    if (firstElement){
-        document.getElementById('radio-0').checked = true;
-        firstElement = false;
-    }
-    renderButton()
-}
+// function renderPPointsList(){
+//     //deleteButton()
+//     type = 'pickup-point';
+//     let modul = document.getElementById('popUpDelivery')
+//     modul.children[1].children[0].style.border = '2px solid #CB11AB';
+//     modul.children[1].children[1].style.border = '2px solid rgba(203, 17, 171, 0.15)';
+//     let PVZ = document.createElement('form')
+//     PVZ.classList = 'popup-window-addresses'
+//     PVZ.id = 'PVZ'
+//     getPPointsList(PVZ);
+//     modul.append(PVZ)
+//     for (let i = 0; i < person.PVZ.length; i++){
+//         addTrashDel(i, type);
+//     }
+//     if (firstElement){
+//         document.getElementById('radio-0').checked = true;
+//         firstElement = false;
+//     }
+//     renderButton()
+// }
 
-function getPPointsList(block){
-    let i = 0;
-    person.PVZ.forEach( elem => {
-        let input = document.createElement('input');
-        input.type = 'radio';
-        input.id = 'radio-'+i;
-        input.name = 'pickup-point-check'
-        let label = document.createElement('label');
-        label.setAttribute('for', `radio-`+i);
-        label.innerHTML = elem.address + '<br>' + ratingIcon + '<span> '+elem.grade+'</span> <span style="color: #A0A0A4">'+elem.working_hours+'</span>'
-        let div = document.createElement('div');
-        div.classList = 'address-list'
-        div.innerHTML = '<div class="form_radio">' + input.outerHTML + label.outerHTML+ '</div><div class="address-list-trash">' + trash + '</div>';
-        block.append(div)
-        i++
-    })
-}
+// function getPPointsList(block){
+//     let i = 0;
+//     person.PVZ.forEach( elem => {
+//         let input = document.createElement('input');
+//         input.type = 'radio';
+//         input.id = 'radio-'+i;
+//         input.name = 'pickup-point-check'
+//         let label = document.createElement('label');
+//         label.setAttribute('for', `radio-`+i);
+//         label.innerHTML = elem.address + '<br>' + ratingIcon + '<span> '+elem.grade+'</span> <span style="color: #A0A0A4">'+elem.working_hours+'</span>'
+//         let div = document.createElement('div');
+//         div.classList = 'address-list'
+//         div.innerHTML = '<div class="form_radio">' + input.outerHTML + label.outerHTML+ '</div><div class="address-list-trash">' + trash + '</div>';
+//         block.append(div)
+//         i++
+//     })
+// }
 
 function renderAddressList(){
-   // deleteButton()
-    type = 'courier'
-    let modul = document.getElementById('popUpDelivery')
-    modul.children[1].children[1].style.border = '2px solid #CB11AB';
-    modul.children[1].children[0].style.border = '2px solid rgba(203, 17, 171, 0.15)';
-    let address = document.createElement('form')
-    address.classList = 'popup-window-addresses'
-    address.id = 'address'
-    getAddressList(address);
-    modul.append(address)
-    for (let i = 0; i < person.addresses.length; i++){
-        addTrashDel(i, type);
+    console.log(typeDelivery)
+    let block;
+    let container = document.getElementById('choosing-delivery-method');
+    if(typeDelivery===typesDelivery[0]){
+        container.children[0].style = 'border: 2px solid #CB11AB';
+        container.children[1].style = 'border: 2px solid rgba(203, 17, 171, 0.15)';
+        removeRadioGroup();
+        block = getAddressPickUpPointList();
+    }else if(typeDelivery===typesDelivery[1]) {
+        container.children[1].style = 'border: 2px solid #CB11AB';
+        container.children[0].style = ' border: 2px solid rgba(203, 17, 171, 0.15)';
+        removeRadioGroup();
+        block = getAddressList();
     }
-    if (firstElement){
-        document.getElementById('radio-0').checked = true;
-        firstElement = false;
-    }
-    //renderButton()
+    let title = document.createElement('h4');
+    title.textContent=`Мои адреса`
+    block.prepend(title)
+    let parent = document.getElementById('choosing-address-container');
+    parent.append(block);
 }
+function removeRadioGroup(){
+    let radioGroup = document.getElementById('address-modal');
+    if (radioGroup) {
+        radioGroup.remove();
+    }
+}
+function changeDeliveryTypePP(){
+    if(typeDelivery !== typesDelivery[0]) {
+        typeDelivery = typesDelivery[0];
+        removeRadioGroup();
+        renderAddressList();
+    }
+}
+function changeDeliveryTypeC(){
+    if(typeDelivery !== typesDelivery[1]) {
+        typeDelivery = typesDelivery[1];
+        removeRadioGroup();
+        renderAddressList();
+    }
+}
+function getAddressPickUpPointList(){
+    removeRadioGroup();
+    let parent = document.createElement('div');
+    parent.className = 'radio-group';
+    parent.id = 'address-modal';
+    personalData.pickupPoints.forEach(item=>{
+        let itemRadio = document.createElement('div');
+        itemRadio.className='custom-radio'
+        itemRadio.innerHTML = `<input name="radio-address" type="radio" id=${item.id} value=${item.address}/>
+                        <label for=${item.id} class="radio-address"></label>
+                        <p><span>${item.address}</span><img src="src/assets/icons/delet.svg"></p>`
+        parent.append(itemRadio);
+    });
 
-function  getAddressList(block){
-    let i = 0;
-    personalData.addresses.forEach( item => {
-        let input = document.createElement('input');
-        input.type = 'radio';
-        input.id = 'radio-'+i;
-        input.name = 'addressCheck'
-        let label = document.createElement('label');
-        label.setAttribute('for', `radio-`+i);
-        label.innerHTML = item
-        let div = document.createElement('div');
-        div.classList = 'address-list'
-        div.innerHTML = '<div class="form_radio">' + input.outerHTML + label.outerHTML+ '</div><div class="address-list-trash">' + trash + '</div>';
-        block.append(div)
-        i++
-    })
+    return parent;
+}
+function getAddressList(){
+    removeRadioGroup();
+    let parent = document.createElement('div');
+    parent.className = 'radio-group';
+    parent.id = 'address-modal';
+    personalData.addresses.forEach(item=>{
+        let itemRadio = document.createElement('div');
+        itemRadio.className='custom-radio'
+        itemRadio.innerHTML = `
+                        <input name="radio-address" type="radio" id=${item.id} value=${item.address}/>
+                        <label for=${item.id} class="radio-address"></label>
+                        <p><span>${item.address}</span><img src="src/assets/icons/delet.svg"></p>`
+        parent.append(itemRadio);
+    });
+
+    return parent;
 }
 
 function takeAddressFromModal(){
     var radioButtons = document.getElementsByName("radio-address");
-    var selectedValue = "";
-
     for (var i = 0; i < radioButtons.length; i++) {
         if (radioButtons[i].checked) {
-            selectedValue = radioButtons[i].value;
+            selectedValue = radioButtons[i].id;
             break;
         }
     }
-
-    for ( let i = 0; i < arr.childElementCount; i++){
-        let arrCheck = arr.children[i].firstElementChild.firstElementChild;
+    for ( let i = 0; i < radioButtons.childElementCount; i++){
+        let arrCheck = radioButtons.children[i].firstElementChild.firstElementChild;
         if (arrCheck.checked){
-            if (type === 'courier'){
-                renderDelivery(personalData.addresses[i])
+            if (typeDelivery === typesDelivery[1]){
+                renderDelivery(personalData.addresses[i]);
             }
-            if (type === 'PVZ'){
+            if (typeDelivery === typesDelivery[0]){
                 renderDelivery(personalData.pickupPoints[i])
             }
         }
     }
-    // closeBlock('popUpDelivery')
+    return selectedValue;
     // renderDeliverySum()
 }
-renderDelivery(defaultAddress);
+function renderCards(){
+    let container = document.getElementById('choosing-bank-cards-container');
+    let parent = document.createElement('div');
+    parent.className = 'radio-group';
+    parent.id = 'address-modal';
+    personalData.cards.forEach(item=>{
+        img = item.type
+        let itemRadio = document.createElement('div');
+        itemRadio.className='custom-radio';
+        let checkedAttribute = item.id === selectedValueCard.id ? "checked" : "";
+        itemRadio.innerHTML = `
+                              <input name="bank_card" type="radio" id=${item.id} ${checkedAttribute}>
+                              <label for=${item.id}></label>
+                              <p><img src=${img}><span>${item.number}</span></p>`
+        parent.append(itemRadio);
+    });
+    console.log(container)
+    container.append(parent);
+}
+function renderSelectCard(){
+    console.log(selectedValueCard)
+    let parent1 = document.getElementById('select-card-order');
+    let parent2 = document.getElementById('select-bank-card');
+    while (parent1.firstChild || parent2.firstChild) {
+        parent1.firstChild.remove();
+        parent2.firstChild.remove();
+    }
+    let block1 = document.createElement('div');
+    block1.innerHTML = `<img src=${selectedValueCard.type}>
+                        <p>${selectedValueCard.number}</p>`
+    let block2 = document.createElement('div');
+    block2.className = 'bank-card';
+
+    block2.innerHTML = `<img src=${selectedValueCard.type}>
+                        <p><span>${selectedValueCard.number}</span><span>${selectedValueCard.expirationDate}</span></p>`
+    parent1.append(block1);
+    parent2.append(block2);
+}
+
+renderSelectCard();
