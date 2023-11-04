@@ -122,6 +122,7 @@ function getAddressFromModal() {
         }
         selectedCheckbox.checked = true;
     }
+    renderSelectAddressOrder(selectedValueAddress,typeDelivery)
     renderDeliveryPoint(selectedValueAddress, typeDelivery);
     closeModal();
 };

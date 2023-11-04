@@ -47,11 +47,15 @@ function renderPrice(product){
     let count = 0;
     let price = 0;
     let discountPrice = 0;
+    let discountProduct =0;
+    let discountPersonal = 0;
     sumProducts.forEach(elem => {
         if (elem.id === product.id){
             count = elem.quantity;
             price = count * elem.price;
             discountPrice = (price * (100 - (elem.discount + personalData.discount)))/100;
+            discountProduct = parseInt(price - ((price * (100 - elem.discount))/100));
+            discountPersonal = parseInt(price - ((price * (100 - personalData.discount))/100));
         }
     })
     let divPrice = document.getElementById(`${product.id}`);
@@ -78,9 +82,13 @@ function renderPrice(product){
                             <span id=${product.id+"-sum"} class="final-price-1">${parseInt(discountPrice).toLocaleString()}&nbsp</span>
                             <span class="final-price-2"> сом</span>
                         </h3>
-                        <p id=${product.id+"-sum"}>
+                        <p class="full-price-p" id=${product.id+"-sum"}>
                             <span>${parseInt(price).toLocaleString()} сом</span>
                         </p>
+                        <div class="popup-price-info">
+                            <p>Скидка ${product.discount}% <span>−${discountProduct} сом</span></p>
+                            <p>Скидка покупателя ${personalData.discount}% <span>−${discountPersonal} сом</span></p>
+                        </div>
                     </div>`
     // div.innerHTML = '<div class="product__panel-price__manage">' +
     //     '   <div class="count">' +

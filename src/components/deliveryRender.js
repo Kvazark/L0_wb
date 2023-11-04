@@ -1,6 +1,5 @@
 let deliveryProducts = [];
 let deliveryCost, destinationSum, firstDaySum;
-let firstElement = true;
 var selectedValueAddress = personalData.pickupPoints[0];
 var selectedValueAddressID;
 var selectedValueCardID;
@@ -8,8 +7,10 @@ var selectedValueCard = personalData.cards[1];
 let typesDelivery = ["pickUpPoint", "courier"]
 let typeDelivery = typesDelivery[0];
 let now = new Date();
+let firstDay, lastDay;
+let flagRenderOrder = false;
 let namesMonth = [
-    "января", "февраля", "мара", "апреля", "мая", "июня",
+    "января", "февраля", "марта", "апреля", "мая", "июня",
     "июля", "августа", "сентября", "октября", "ноября", "декабря"
 ]
 
@@ -27,6 +28,7 @@ function getDeliveryProducts() {
     })
     renderDeliveryProducts();
     renderDeliveryPoint(personalData.pickupPoints[0], typeDelivery);
+
 }
 
 function returnDistance(id) {
@@ -120,15 +122,28 @@ function renderDeliveryProducts() {
         array.push(elem.distance)
     })
     let arr = new Set(array);
+    if(flagRenderOrder){
+        firstDay='';
+        lastDay='';
+    }
     arr.forEach(el => {
+        let date = now.addDays(el + 1);
+        let dateDev = date.addDays(1);
+        let dateString = getDate(date, dateDev);
+        // Проверяем первое и последнее число с месяцем
+        if (!firstDay || dateString > firstDay) {
+            firstDay = dateString;
+        }
+        if (!lastDay || dateString < lastDay) {
+            lastDay = dateString;
+        }
         let block = document.createElement('div')
         block.className = "delivery-point";
-        let date = now.addDays(el + 1)
-        let dateDev = date.addDays(1)
         block.innerHTML = ` <h5>${getDate(date, dateDev)}</h5>
                             <section class="delivery-date-images">
                             ${getProducts(el)}
                             </section>`
+
         firstDaySum = getDate(date, dateDev);
         document.getElementById('delivery-information-2').append(block);
     })
@@ -139,6 +154,11 @@ function renderDeliveryProducts() {
                             <p class="description-note-delivery">Обратная доставка товаров на склад при отказе — <span>бесплатно</span></p>
                        <div class="popup-info-note-delivery"><p>Если товары вам не подойдут, мы вернем их обратно на склад — это бесплатно</p></div>`
     document.getElementById('delivery-information-2').append(note);
+    try {
+        getTimeDeliveryTime();
+    } catch (err) {
+
+    }
 }
 
 function getProducts(n) {
@@ -163,54 +183,7 @@ function renderDelivery() {
     renderAddressList();
     let parent = document.getElementById('delivery-information');
     //renderDeliveryPoint(destination, type);
-
 }
-
-function renderSubscription() {
-    let sub = document.getElementById('delivery__subscription');
-    sub.innerHTML = '<img src="img/price%20shipping.svg" alt="галочка"><div style="display: inline-block; margin-left: 2px"> Обратная доставка товаров на склад при отказе — <span id="free" onmouseover="popupInfo(id)" onmouseout="popupInfo(id)">бесплатно</span></div>' +
-        '<div class="info__content" id="free-content" style="width: 290px; left: 260px"><p>Если товары вам не подойдут, мы вернем их обратно на склад — это бесплатно</p></div>'
-}
-
-// function renderPPointsList(){
-//     //deleteButton()
-//     type = 'pickup-point';
-//     let modul = document.getElementById('popUpDelivery')
-//     modul.children[1].children[0].style.border = '2px solid #CB11AB';
-//     modul.children[1].children[1].style.border = '2px solid rgba(203, 17, 171, 0.15)';
-//     let PVZ = document.createElement('form')
-//     PVZ.classList = 'popup-window-addresses'
-//     PVZ.id = 'PVZ'
-//     getPPointsList(PVZ);
-//     modul.append(PVZ)
-//     for (let i = 0; i < person.PVZ.length; i++){
-//         addTrashDel(i, type);
-//     }
-//     if (firstElement){
-//         document.getElementById('radio-0').checked = true;
-//         firstElement = false;
-//     }
-//     renderButton()
-// }
-
-// function getPPointsList(block){
-//     let i = 0;
-//     person.PVZ.forEach( elem => {
-//         let input = document.createElement('input');
-//         input.type = 'radio';
-//         input.id = 'radio-'+i;
-//         input.name = 'pickup-point-check'
-//         let label = document.createElement('label');
-//         label.setAttribute('for', `radio-`+i);
-//         label.innerHTML = elem.address + '<br>' + ratingIcon + '<span> '+elem.grade+'</span> <span style="color: #A0A0A4">'+elem.working_hours+'</span>'
-//         let div = document.createElement('div');
-//         div.classList = 'address-list'
-//         div.innerHTML = '<div class="form_radio">' + input.outerHTML + label.outerHTML+ '</div><div class="address-list-trash">' + trash + '</div>';
-//         block.append(div)
-//         i++
-//     })
-// }
-
 function renderAddressList() {
     console.log(typeDelivery)
     let block;
@@ -262,9 +235,10 @@ function getAddressPickUpPointList() {
     parent.className = 'radio-group';
     parent.id = 'address-modal';
     personalData.pickupPoints.forEach(item => {
+        let checkedAttribute = item.id === selectedValueAddress.id ? "checked" : "";
         let itemRadio = document.createElement('div');
         itemRadio.className = 'custom-radio'
-        itemRadio.innerHTML = `<input name="radio-address" type="radio" id=${item.id} value=${item.address}/>
+        itemRadio.innerHTML = `<input name="radio-address" type="radio" id=${item.id} value=${item.address} ${checkedAttribute}/>
                         <label for=${item.id} class="radio-address"></label>
                         <p><span>${item.address}</span><img src="src/assets/icons/delet.svg"></p>`
         parent.append(itemRadio);
@@ -280,9 +254,10 @@ function getAddressList() {
     parent.id = 'address-modal';
     personalData.addresses.forEach(item => {
         let itemRadio = document.createElement('div');
-        itemRadio.className = 'custom-radio'
+        itemRadio.className = 'custom-radio';
+        let checkedAttribute = item.id === selectedValueAddress.id ? "checked" : "";
         itemRadio.innerHTML = `
-                        <input name="radio-address" type="radio" id=${item.id} value=${item.address}/>
+                        <input name="radio-address" type="radio" id=${item.id} value=${item.address} ${checkedAttribute}/>
                         <label for=${item.id} class="radio-address"></label>
                         <p><span>${item.address}</span><img src="src/assets/icons/delet.svg"></p>`
         parent.append(itemRadio);
@@ -290,29 +265,30 @@ function getAddressList() {
 
     return parent;
 }
-
-// function takeAddressFromModal(){
-//     var radioButtons = document.getElementsByName("radio-address");
-//     for (var i = 0; i < radioButtons.length; i++) {
-//         if (radioButtons[i].checked) {
-//             selectedValue = radioButtons[i].id;
-//             break;
-//         }
-//     }
-//     for ( let i = 0; i < radioButtons.childElementCount; i++){
-//         let arrCheck = radioButtons.children[i].firstElementChild.firstElementChild;
-//         if (arrCheck.checked){
-//             if (typeDelivery === typesDelivery[1]){
-//                 renderDelivery(personalData.addresses[i]);
-//             }
-//             if (typeDelivery === typesDelivery[0]){
-//                 renderDelivery(personalData.pickupPoints[i])
-//             }
-//         }
-//     }
-//     return selectedValue;
-//     // renderDeliverySum()
-// }
+function renderSelectAddressOrder() {
+    let parent = document.getElementById('point-courier-order');
+    if(parent){
+        while (parent.firstChild) {
+            parent.firstChild.remove();
+        }
+        let description;
+        if(typeDelivery===typesDelivery[0]) description = 'Доставка в пункт выдачи';
+        else description = 'Доставка курьером';
+        parent.innerHTML = ` <div class="point-courier-order">
+                    <section>
+                        <h5>${description}</h5>
+                        <img src="src/assets/icons/edit_pencil.svg">
+                    </section>
+                    <p>${selectedValueAddress.address}</p>
+                    <span id="time-delivery-order"></span>
+                </div>
+                <div class="delivery-order-note">
+                    <img src="src/assets/icons/price_shipping.svg"/>
+                    <p class="description-note-delivery-order">Обратная доставка товаров на склад при отказе — <span>бесплатно</span></p>
+                    <div class="popup-info-note-delivery-order"><p>Если товары вам не подойдут, мы вернем их обратно на склад — это бесплатно</p></div>
+                </div>`;
+    }
+}
 
 function renderCards() {
     let container = document.getElementById('choosing-bank-cards-container');

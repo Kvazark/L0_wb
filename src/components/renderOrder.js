@@ -29,10 +29,10 @@ function renderOrder(){
     childBlock2.innerHTML = ` <div class="point-courier-order">
                     <section>
                         <h5>${description}</h5>
-                        <img src="src/assets/icons/edit_pencil.svg">
+                        <img onclick="openModal('deliv')" src="src/assets/icons/edit_pencil.svg">
                     </section>
                     <p>${selectedValueAddress.address}</p>
-                    <span id="time-delivery-oreder">5–8 фев</span>
+                    <span id="time-delivery-order"></span>
                 </div>
                 <div class="delivery-order-note">
                     <img src="src/assets/icons/price_shipping.svg"/>
@@ -46,7 +46,7 @@ function renderOrder(){
     <div class="paymet-order-details" id="paymet-order-details">
                     <section>
                         <h5>Оплата картой</h5>
-                        <img src="src/assets/icons/edit_pencil.svg"/>
+                        <img onclick="openModal('payMet')" src="src/assets/icons/edit_pencil.svg" />
                     </section>
                     <div id="select-card-order">
                     <!--                        <img src="src/assets/icons/card_mir.svg">-->
@@ -65,11 +65,10 @@ function renderOrder(){
     parent.append(childBlock2);
     parent.append(childBlock3);
     renderSelectCard();
+    getTimeDeliveryTime();
 }
 function calculation(){
-    let parent = document.getElementById('price-order-container')
     let words = ['товар', 'товара', 'товаров'];
-    let disSum = 0;
     let priceSum = 0;
     let countProducts = 0;
     let totalSum = 0;
@@ -87,7 +86,7 @@ function calculation(){
     let discounts = parseInt(priceSum) - parseInt(totalSum);
     let count = normalizeCountForm(countProducts, words);
     totalPrice = parseInt(totalSum);
-    console.log(totalPrice,disSum, discounts,countProducts);
+    let parent = document.getElementById('price-order-container')
     if(parent){
         parent.innerHTML = `<div class="header-price-order">
                     <h2>Итого</h2>
@@ -108,18 +107,27 @@ function calculation(){
                     </div>
                 </section>`
     }
-    //getTimeDeliveryTime();
     togglePaymentMessage();
 }
-// function getTimeDeliveryTime(){
-//     let content
-//     if (firstDaySum){
-//         let time = firstDaySum.split(' ')
-//         let month = time[3].substring(0,3)
-//         content = time[0] + time[1] + time[2] + ' ' + month
-//     } else {
-//         content = ''
-//     }
-//     let span = document.getElementById('time-delivery-oreder');
-//     span.textContent = content;
-// }
+function getTimeDeliveryTime(){
+    flagRenderOrder = true;
+    let content
+    let month
+    if (firstDay){
+        let day1 = firstDay.split('—')
+        let day2;
+        if (lastDay){
+            let dayLast = lastDay.split('—')
+            day2 = dayLast[1].split(' ');
+        }else{
+            day2 = day1[1].split(' ');
+        }
+        if (day2[1]==='ноября') month = day2[1].substring(0,4)
+        else month = day2[1].substring(0,4)
+        content = day1[0] + '–' + day2[0] + ' ' + month
+    } else {
+        content = ''
+    }
+    let parent = document.getElementById('time-delivery-order');
+    parent.textContent = content;
+}
