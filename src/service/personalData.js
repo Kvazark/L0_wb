@@ -2,13 +2,13 @@ personalData = {
     id: 412536534454,
     discount: 10,
     addresses: [{
-        id: '1231231',
+        id: 'ad-1231231',
         address: "Кишкек, улица Табышалиева, 57"
     }, {
-        id: '231312',
+        id: 'ad-231312',
         address: "Кишкек, улица Жукеева-Пудовкина, 77/1"
     }, {
-        id: '213421333',
+        id: 'ad-213421333',
         address: "Кишкек, микрорайон Джал, улица Ахунбаева Исы, 67/1"}
     ],
     deliveryCost: "free",
@@ -39,19 +39,19 @@ personalData = {
         id: '198942',
         number: "1234 56•• •••• 1232",
         type: "src/assets/icons/card_mir.svg",
-        expirationDate:"01/30",
+        expirationDate:"02/30",
          },
         {
             id: '198943',
             number: "1234 56•• •••• 1233",
             type: "src/assets/icons/card_mastercard.svg",
-            expirationDate:"01/30",
+            expirationDate:"03/30",
         },
         {
             id: '198944',
             number: "1234 56•• •••• 1234",
             type: "src/assets/icons/card_maestro.svg",
-            expirationDate:"01/30",
+            expirationDate:"04/30",
         }
     ]
 };

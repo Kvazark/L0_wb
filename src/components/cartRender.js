@@ -8,7 +8,6 @@ var sumProducts = [];
 var cartCount = 0;
 var missingCount = 0;
 
-
 function renderAvailableProduct(product) {
     let updateProvider = changeProvider(product.provider)
     let newElement = document.createElement("div");
@@ -39,7 +38,6 @@ function renderAvailableProduct(product) {
                             </div>
                         </div>`;
     availableProducts.append(newElement)
-  //  addDescription(product);
     renderPrice(product, sumProducts);
     addSizeAndColor(product);
     checkCheckbox(product.id);
@@ -54,7 +52,6 @@ function renderPrice(product){
             count = elem.quantity;
             price = count * elem.price;
             discountPrice = (price * (100 - (elem.discount + personalData.discount)))/100;
-
         }
     })
     let divPrice = document.getElementById(`${product.id}`);
@@ -119,10 +116,8 @@ function renderPrice(product){
 
 function addSizeAndColor(product){
     const itemColorAndSize = document.getElementById(product.id+'-color-and-size')
-
     let colorSpan = document.createElement('span');
     let sizeSpan = document.createElement('span');
-    // let boxSize = document.getElementById(product.id+'-size')
     if (product.color){
         colorSpan.textContent = `Цвет: ${product.color}`;
         itemColorAndSize.appendChild(colorSpan);
@@ -132,7 +127,6 @@ function addSizeAndColor(product){
         sizeSpan.textContent = `Размер: ${product.size}`;
         itemColorAndSize.appendChild(sizeSpan);
         itemColorAndSize.style.display = "flex";
-        // boxSize.innerHTML = product.size
     }
 }
 function renderNotAvailable(product){
@@ -231,47 +225,8 @@ function cartCountCircle(n){
         let block = document.getElementById('avail-control');
         cartCircle.style.display = 'none';
         cartCircle.innerHTML = "";
-       // bucketNav.style.display = 'none';
-      //  bucketNav.innerHTML = "";
-       // block.classList.toggle('hide')
-      //  block.nextElementSibling.classList.toggle('hide')
     }
 }
-
-// function renderAvailable(product){
-//     let seller = renderSeller(product.seller);
-//     let div = document.createElement('div');
-//     div.className = "product__panel";
-//     div.id = product.id;
-//     div.innerHTML = '<div class="product__panel-card">' +
-//         '               <div class="product__panel-check">' +
-//         '                   <input type="checkbox" id="'+product.id+'-check" onclick="addCheck(id)">' +
-//         '                   <label for="'+product.id+'-check"></label>' +
-//         '                   <span id="'+  product.id +'-size"></span>' +
-//         '               </div>' +
-//         '               <img src="'+ product.photo +'" alt="'+product.name+'">' +
-//         '               <div class="product__panel-description">' +
-//         '                   <h4>'+ product.name + '</h4>' +
-//         '                   <div id="'+product.id+'-description" class="product__panel-description__add"></div>' +
-//         '                   <div class="dropdown">' +
-//         '                       <span class="loc">'+product.location+'</span>' +
-//         '                       <br>' +
-//         '                       <span class="mob">'+product.seller+'</span>' +
-//         '                       <span class="info" id="'+product.id+'-seller-info" onmouseover="popupInfo(id)" onmouseout="popupInfo(id)">i</span>' +
-//         '                       <div class="info__content" id="'+product.id+'-seller-info-content">' +
-//         '                           <span><b>'+seller+'</b></span><br>' +
-//         '                           <span>ОГРН: '+product.OGRN+'</span>' +
-//         '                           <p>'+product.address+'</p>' +
-//         '                       </div>' +
-//         '                   </div>' +
-//         '               </div>' +
-//         '           </div>';
-//     avail.append(div)
-//     addDescription(product);
-//     renderPrice(product, sumProducts);
-//     checkCheckbox(product.id);
-// }
-
 
 function renderHead(){
     if (missingCount > 0) {
@@ -333,21 +288,6 @@ function minus(idMinus){
             divPrice.removeChild(div);
             renderPrice(productMinus);
            // calculate()
-           //  if (elem.quantity > 0) {
-           //      timeout = setTimeout(() => {
-           //          interval = setInterval(() => {
-           //              elem.quantity--
-           //              let divPrice = document.getElementById(productMinus.id);
-           //              let div = document.getElementById(productMinus.id + '-price');
-           //              divPrice.removeChild(div);
-           //              renderPrice(productMinus);
-           //             // calculate()
-           //              if (elem.quantity === 1) {
-           //                  clearTimers();
-           //              }
-           //          }, 100)
-           //      }, 200)
-           //  }
         }
     })
     getDeliveryProducts()
@@ -371,23 +311,6 @@ function plus(idPlus){
             divPrice.removeChild(div);
             renderPrice(productPlus);
            // calculate()
-           //  timeout = setTimeout(()=>{
-           //      interval = setInterval(()=>{
-           //          elem.quantity++
-           //          let divPrice = document.getElementById(productPlus.id);
-           //          let div = document.getElementById(productPlus.id + '-price');
-           //          divPrice.removeChild(div);
-           //          renderPrice(productPlus);
-           //         // calculate()
-           //          if (elem.quantity >= productPlus.amount){
-           //              elem.quantity = productPlus.amount - 1
-           //          }
-           //      },100)
-           //  },200)
-           //  if (elem.quantity === productPlus.amount){
-           //      clearTimers();
-           //
-           //  }
         }
     });
     getDeliveryProducts()
@@ -404,7 +327,7 @@ function deleteFromBucket(el){
     document.getElementById('available-products-list').innerHTML = '';
     document.getElementById('missing-products-list').innerHTML = '';
     checkupProducts();
-    //getDeliveryProducts()
+    getDeliveryProducts()
     //calculate();
 }
 
@@ -510,19 +433,4 @@ function verificationCheck(){
     }
     getDeliveryProducts()
 }
-// function addDescription(product){
-//     const description = document.getElementById(product.id+'-description')
-//     let spanColor = document.createElement('span');
-//     let spanSize = document.createElement('span');
-//     let boxSize = document.getElementById(product.id+'-size')
-//     if (product.color){
-//         spanColor.innerHTML = 'Цвет: '+ product.color;
-//         description.append(spanColor);
-//     }
-//     if (product.size){
-//         spanSize.innerHTML = 'Размер: '+ product.size;
-//         description.append(spanSize);
-//         boxSize.innerHTML = product.size
-//         boxSize.classList = 'boxsize mob-show'
-//     }
-// }
+

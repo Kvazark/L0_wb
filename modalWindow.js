@@ -54,11 +54,11 @@ const openModal = function (type) {
                               </div>`
         let btn = document.createElement('div');
         btn.className = 'modal-btn';
-        btn.innerHTML = `<button onclick="SaveDelivery()">Выбрать</button>`;
+        btn.innerHTML = `<button onclick="getAddressFromModal()">Выбрать</button>`;
         parent.append(contentBlock);
         parent.append(btn);
         if(typeDelivery===undefined) typeDelivery=typesDelivery[0];
-        renderDelivery(defaultAddress);
+        renderDelivery(selectedValueAddress);
     }else if(type==='payMet'){
         header.textContent = 'Способ оплаты';
         headerBlock.prepend(header)
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function() {
 function getSelectCard() {
     var selectedCheckbox = document.querySelector('input[name="bank_card"]:checked');
     if (selectedCheckbox) {
-        var selectedValueCardID = selectedCheckbox.id;
+        selectedValueCardID = selectedCheckbox.id;
         for (var i = 0; i < personalData.cards.length; i++) {
             if (personalData.cards[i].id === selectedValueCardID) {
                 selectedValueCard = personalData.cards[i];
@@ -99,6 +99,30 @@ function getSelectCard() {
         console.log("Ни один чекбокс не выбран");
     }
     renderSelectCard();
+    closeModal();
+};
+function getAddressFromModal() {
+    var selectedCheckbox = document.querySelector('input[name="radio-address"]:checked');
+    if (selectedCheckbox) {
+        selectedValueAddressID = selectedCheckbox.id;
+        console.log(selectedValueAddressID)
+        console.log(typeDelivery)
+        for (var i = 0; i < personalData.cards.length; i++) {
+            if(typeDelivery===typesDelivery[1]){
+                if (personalData.addresses[i].id === selectedValueAddressID) {
+                    selectedValueAddress = personalData.addresses[i];
+                    break;
+                }
+            }else{
+                if (personalData.pickupPoints[i].id === selectedValueAddressID) {
+                    selectedValueAddress = personalData.pickupPoints[i];
+                    break;
+                }
+            }
+        }
+        selectedCheckbox.checked = true;
+    }
+    renderDeliveryPoint(selectedValueAddress, typeDelivery);
     closeModal();
 };
 // open modal event

@@ -44,7 +44,7 @@
     line-height: 1.5rem;
     width: 10rem;
 }
-.delivery-information{
+.delivery-information, .delivery-information-child{
     display: flex;
     flex-direction: column;
     gap: 1.1rem;
