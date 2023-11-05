@@ -29,7 +29,7 @@ function renderOrder(){
     childBlock2.innerHTML = ` <div class="point-courier-order">
                     <section>
                         <h5>${description}</h5>
-                        <img onclick="openModal('deliv')" src="src/assets/icons/edit_pencil.svg">
+                        <button><img onclick="openModal('deliv')" src="src/assets/icons/edit_pencil.svg"></button>
                     </section>
                     <p>${selectedValueAddress.address}</p>
                     <span id="time-delivery-order"></span>
@@ -46,7 +46,7 @@ function renderOrder(){
     <div class="paymet-order-details" id="paymet-order-details">
                     <section>
                         <h5>Оплата картой</h5>
-                        <img onclick="openModal('payMet')" src="src/assets/icons/edit_pencil.svg" />
+                        <button><img onclick="openModal('payMet')" src="src/assets/icons/edit_pencil.svg" /></button>
                     </section>
                     <div id="select-card-order">
                     <!--                        <img src="src/assets/icons/card_mir.svg">-->

@@ -24,6 +24,9 @@ button {
     color: transparent;
     border: none;
 }
+button:hover{
+    transform: scale(1.03);
+}
 button, input {
     box-shadow: none;
     background: none;
@@ -54,6 +57,10 @@ input[type=number] {
 @media (max-width: 1023px) {
     .content{
         flex-direction: column;
+        padding: 0;
+    }
+    .header-available .checkbox-block{
+        padding: 0 1rem;
     }
 }
 @media (min-width: 1400px) {

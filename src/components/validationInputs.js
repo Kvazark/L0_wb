@@ -59,7 +59,6 @@ document.addEventListener("DOMContentLoaded", function () {
 //     svgElement.addEventListener('mouseout', function() {
 //         svgElement.setAttribute('fill', 'black');
 //     });
-
 });
 
 let checkName = true;

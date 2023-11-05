@@ -1,3 +1,40 @@
+@media (min-width: 1023px) and (max-width: 1399px) {
+    .recipient-inputs{
+        width:100%;
+    }
+
+}
+@media (min-width: 1399px) {
+    .recipient-inputs{
+        width: 83%;
+    }
+}
+@media (min-width: 1023px) {
+    .recipient-container{
+        padding: 1rem 1.5rem 1.5rem 1.5rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    .recipient-inputs section{
+        align-items: flex-start;
+        gap: 1.5rem;
+        align-self: stretch;
+        height: 4rem;
+    }
+}
+@media (max-width: 1023px) {
+    .recipient-container{
+        padding: 1rem 1.5rem 1.5rem 1.5rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    .recipient-inputs section{
+        flex-direction: column;
+        width: 100%;
+    }
+}
 .delivery-method-container{
     display: flex;
     width: 100%;
@@ -214,27 +251,20 @@
 /*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 .recipient-container{
     display: flex;
-    padding: 1rem 1.5rem 1.5rem 1.5rem;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
+
     border-radius: 16px;
     background: #FFF;
     width: 100%;
 }
+
 .recipient-inputs{
     display: flex;
-    width: 83%;
     flex-direction: column;
     align-items: flex-start;
     align-self: stretch;
 }
 .recipient-inputs section{
     display: flex;
-    align-items: flex-start;
-    gap: 1.5rem;
-    align-self: stretch;
-    height: 4rem;
 }
 .block-input{
     position: relative;
