@@ -22,7 +22,7 @@ function getDeliveryProducts() {
             deliveryProducts.push({
                 id: elem.id,
                 distance: returnDistance(elem.id),
-                quant: elem.quant
+                quantity: elem.quantity
             })
         }
     })
@@ -173,7 +173,11 @@ function getProducts(n) {
                     alt = elem.name
                 }
             })
-            content += '<div class="product-delivery"><img src="' + img + '" alt="' + alt + '"><div>' + el.quant + '</div></div>';
+            let stylesDisplay;
+            if(el.quantity>1)stylesDisplay ='';
+            else stylesDisplay = 'display: none';
+            content += '<div class="product-delivery"><img src="' + img + '" alt="' + alt + '"><div style="'+stylesDisplay+'">' + el.quantity + '</div></div>';
+
         }
     })
     return content

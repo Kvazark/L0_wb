@@ -45,16 +45,22 @@ input::-webkit-inner-spin-button {
 input[type=number] {
     -moz-appearance: textfield;
 }
-@media (min-width: 970px) {
+@media (max-width: 1024px) and (min-width: 400px){
     .content{
         flex-direction: row;
-        padding: 0 1rem  3.5% 1.5rem;
+        padding: 0 3% 4.8% 1.5rem;
     }
 }
-@media (max-width: 970px) {
+@media (max-width: 1023px) {
     .content{
         flex-direction: column;
     }
+}
+@media (min-width: 1400px) {
+    .content{
+        padding: 0 2% 3.5% 1.5rem;
+    }
+
 }
 .content{
     border-radius: 22px;
@@ -63,6 +69,7 @@ input[type=number] {
     align-items: flex-start;
     gap: 1.9rem;
     align-self: stretch;
+
     /*width: 100vw;*/
 }
 .checkbox-block{

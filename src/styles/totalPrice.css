@@ -1,19 +1,38 @@
-@media (min-width: 970px) {
+@media (min-width: 1024px) {
     .making-order-container{
         background: #FFF;
         box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.15), 0px 0px 1px rgba(0, 0, 0, 0.3);
-        max-width: 31.5%;
-        min-width: 18.94rem;
+        padding: 1.2rem 1.15rem 1.5rem 1.5rem;
+    }
+    .popup-info-note-delivery-order{
+        width: 105%;
+        left: -2.5%;
     }
 }
-@media (max-width: 970px) {
+@media (min-width: 1024px) and (max-width: 1399px){
+    .making-order-container{
+        padding: 1.1rem 1.5rem 1.5rem 1.6rem;
+        max-width: 30%;
+        min-width: 18.94rem;
+    }
+    .popup-info-note-delivery-order{
+        width: 110%;
+        left: -5%;
+    }
+}
+@media (min-width: 1400px) {
+    .making-order-container{
+        max-width: 31.5%;
+        min-width: 26.8rem;
+    }
+}
+@media (max-width: 1023px) {
     .making-order-container{
         background: none ;
     }
 }
 .making-order-container{
     display: flex;
-    padding: 1rem 1.5rem 1.5rem 1.3rem;
     height: fit-content;
     gap: 1.5rem;
     flex-direction: column;
@@ -142,8 +161,7 @@
     visibility: visible;
 }
 .popup-info-note-delivery-order {
-    width: 110%;
-    left: -5%;
+
     padding: 0.625rem 1rem 0.875rem 1rem;
     flex-direction: column;
     align-items: flex-start;
@@ -176,12 +194,11 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 8px;
+    gap: 0.7rem;
     align-self: stretch;
 }
 .paymet-order-details div{
     display: flex;
-    align-items: center;
     gap: 0.5rem;
     align-self: stretch;
 }
@@ -249,6 +266,7 @@
     align-items: flex-start;
     gap: 0.5rem;
     align-self: stretch;
+    padding-right: 1rem;
 }
 .checkbox-agreement img{
     width: 0.8125rem;

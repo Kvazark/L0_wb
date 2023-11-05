@@ -36,7 +36,7 @@ function renderOrder(){
                 </div>
                 <div class="delivery-order-note">
                     <img src="src/assets/icons/price_shipping.svg"/>
-                    <p class="description-note-delivery-order">Обратная доставка товаров на склад при отказе — <span>бесплатно</span></p>
+                    <p class="description-note-delivery-order">Обратная доставка товаров на&nbsp;склад при отказе&nbsp; — <span>бесплатно</span></p>
                     <div class="popup-info-note-delivery-order"><p>Если товары вам не подойдут, мы вернем их обратно на склад — это бесплатно</p></div>
                 </div>`;
     let childBlock3 = document.createElement('section');

@@ -49,6 +49,16 @@ document.addEventListener("DOMContentLoaded", function () {
     for (let ev of ['input', 'blur', 'focus']) {
         inn.addEventListener(ev, (e) => validateINN(e.target.id));
     }
+    /////////////прослушивание событий svg////////////////////////
+//     var svgElement = document.getElementsByClassName('to_favorite');
+//     svgElement.addEventListener('mouseover', function() {
+//         svgElement.setAttribute('fill', '#CB11AB');
+//         svgElement.setAttribute('stroke', '#CB11AB');
+//     });
+// // Обработчик события при уходе с SVG
+//     svgElement.addEventListener('mouseout', function() {
+//         svgElement.setAttribute('fill', 'black');
+//     });
 
 });
 

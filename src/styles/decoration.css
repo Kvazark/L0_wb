@@ -15,6 +15,7 @@
     gap: 0.625rem;
     align-self: stretch;
     justify-content: space-between;
+    padding-top: 0.1rem;
 }
 .header-decoration-block h3{
     color: #000;
@@ -92,7 +93,6 @@
     gap: 0.5rem;
 }
 .delivery-date-images div{
-    overflow: hidden;
     border-radius: 8px;
     width: 2.5rem;
     height: 3.5rem;
@@ -106,15 +106,24 @@
 }
 .product-delivery div{
     display: flex;
+    width: fit-content;
     height: 16px;
     transform: rotate(0.065deg);
-    padding: 1px 2px 0px 2px;
+    padding: 1px 0.3rem 0px 0.3rem;
     justify-content: center;
     align-items: center;
     border-radius: 16px;
     background: var(--red);
     z-index: 1000;
     position: absolute;
+    top: -15%;
+    right: -10%;
+    color: #FFF;
+    text-align: center;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 18px;
 }
 .delivery-note{
     display: flex;
